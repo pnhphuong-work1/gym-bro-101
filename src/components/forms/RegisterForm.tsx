@@ -1,61 +1,67 @@
-'use client'
+'use client';
+
 import React, {useState} from 'react';
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import {LoginSchema} from "@/lib/validation"
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {z} from "zod";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {LoadingSpinner} from "@/components/shared/LoadingSpinner";
-import {login} from "@/lib/actions/login.action";
-import {useRouter} from "next/navigation";
-import {useGlobalContext} from "@/context/GlobalContext";
 import Link from "next/link";
-import {isErrorResponseValue} from "@/lib/utils";
+import {useRouter} from "next/navigation";
+import {useForm} from "react-hook-form";
+import {z} from "zod";
+import {RegisterSchema} from "@/lib/validation";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {register} from "@/lib/actions/user.action";
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const router = useRouter();
-    const {setRole, setFullName} = useGlobalContext();
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver: zodResolver(LoginSchema),
+    const form = useForm<z.infer<typeof RegisterSchema>>({
+        resolver: zodResolver(RegisterSchema),
         defaultValues: {
             email: "",
             password: "",
+            confirmPassword: "",
+            fullName: "",
         },
     })
 
-    async function onSubmit(values: z.infer<typeof LoginSchema>) {
+    async function onSubmit(values: z.infer<typeof RegisterSchema>) {
         setIsSubmitting(true)
         try {
-            const res = await login(values);
+            // Add your register logic here
+            const res = await register(values);
 
-            if (!isErrorResponseValue(res)) {
-                setRole(res.value.role);
-                setFullName(res.value.fullName);
-                router.push('/');
+            if (res && res.isSuccess) {
+                router.push('/login');
                 return;
             }
-            setError(res.detail);
-        } catch (error : any) {
-            console.error(error.response)
+
+            setError(res.error.message);
+        } catch (error) {
+            console.error(error)
         } finally {
             setIsSubmitting(false)
         }
     }
-
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <FormField
+                    control={form.control}
+                    name="fullName"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Input your full name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
                 <FormField
                     control={form.control}
                     name="email"
@@ -83,6 +89,21 @@ const LoginForm = () => {
                         </FormItem>
                     )}
                 />
+
+                <FormField
+                    control={form.control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Confirm Password</FormLabel>
+                            <FormControl>
+                                <Input type="password" placeholder="Confirm your password" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
                 <FormMessage>
                     {error}
                 </FormMessage>
@@ -95,12 +116,12 @@ const LoginForm = () => {
                 </Button>
 
                 <FormMessage className="text-center text-black">
-                    Don't have an account?
+                    Already have an account?
                     <Link
                         className="text-blue-500 p-2 hover:underline"
-                        href={"/register"}
+                        href={"/login"}
                     >
-                        Register
+                        Login
                     </Link>
                 </FormMessage>
             </form>
@@ -108,4 +129,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegisterForm;
