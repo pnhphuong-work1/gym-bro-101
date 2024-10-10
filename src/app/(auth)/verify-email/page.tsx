@@ -1,21 +1,20 @@
 import React from 'react';
-import LoginForm from "@/components/forms/LoginForm";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import VerifyEmailForm from "@/components/forms/VerifyEmailForm";
 
-
-const LoginPage = () => {
+const VerifyEmailPage = () => {
     return (
         <div className="flex min-h-screen w-full items-center justify-center">
             <Card className="w-full max-w-md p-8">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-semibold">Login</CardTitle>
+                    <CardTitle className="text-2xl font-semibold">Verify Email</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <LoginForm />
+                    <VerifyEmailForm />
                 </CardContent>
             </Card>
         </div>
     );
 };
 
-export default LoginPage;
+export default VerifyEmailPage;

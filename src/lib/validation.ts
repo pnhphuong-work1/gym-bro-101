@@ -14,3 +14,17 @@ export const RegisterSchema = z.object({
     path: ["confirmPassword"], // Show error under confirmPassword field
     message: "Passwords do not match",
 });
+
+export const ForgotPasswordSchema = z.object({
+    email: z.string().email("Please enter a valid email"),
+})
+
+export const RenewPasswordSchema = z.object({
+    email: z.string().email("Please enter a valid email"),
+    token: z.string().min(1, "Please enter a token"),
+    newPassword: z.string().min(1, "Please enter a new password"),
+    confirmPassword: z.string().min(1, "Please confirm your new password"),
+}).refine((data) => data.newPassword === data.confirmPassword, {
+    path: ["confirmPassword"], // Show error under confirmPassword field
+    message: "Passwords do not match",
+})

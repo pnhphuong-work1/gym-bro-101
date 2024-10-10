@@ -80,6 +80,12 @@ const LoginForm = () => {
                                 <Input type="password" placeholder="Input your password" {...field} />
                             </FormControl>
                             <FormMessage />
+                            <p className="text-sm text-right">
+                                <Link
+                                    className="text-blue-500 p-2 hover:underline"
+                                    href={"/forgot-password"
+                                }>Forgot Password?</Link>
+                            </p>
                         </FormItem>
                     )}
                 />
@@ -95,7 +101,7 @@ const LoginForm = () => {
                 </Button>
 
                 <FormMessage className="text-center text-black">
-                    Don't have an account?
+                    Don&amp;t have an account?
                     <Link
                         className="text-blue-500 p-2 hover:underline"
                         href={"/register"}

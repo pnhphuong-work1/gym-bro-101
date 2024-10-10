@@ -1,21 +1,20 @@
 import React from 'react';
-import LoginForm from "@/components/forms/LoginForm";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import RenewPasswordForm from "@/components/forms/RenewPasswordForm";
 
-
-const LoginPage = () => {
+const ResetPasswordPage = () => {
     return (
         <div className="flex min-h-screen w-full items-center justify-center">
             <Card className="w-full max-w-md p-8">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-semibold">Login</CardTitle>
+                    <CardTitle className="text-2xl font-semibold">Reset Password</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <LoginForm />
+                    <RenewPasswordForm />
                 </CardContent>
             </Card>
         </div>
     );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;
