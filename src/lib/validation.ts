@@ -10,6 +10,9 @@ export const RegisterSchema = z.object({
     password: z.string().min(1, "Please enter a password"),
     confirmPassword: z.string().min(1, "Please confirm your password"),
     fullName: z.string().min(1, "Please enter your full name"),
+    dateOfBirth: z.date({
+        message: "Please enter a valid date of birth",
+    }),
 }).refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"], // Show error under confirmPassword field
     message: "Passwords do not match",
@@ -18,6 +21,11 @@ export const RegisterSchema = z.object({
 export const ForgotPasswordSchema = z.object({
     email: z.string().email("Please enter a valid email"),
 })
+
+export const VerifyEmailSchema = z.object({
+    email: z.string().email("Please enter a valid email"),
+    token: z.string().min(1, "Please enter a token"),
+});
 
 export const RenewPasswordSchema = z.object({
     email: z.string().email("Please enter a valid email"),

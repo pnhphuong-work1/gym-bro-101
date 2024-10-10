@@ -17,7 +17,6 @@ export function GlobalProvider({children} : {children: React.ReactNode}) {
     const [role, setRole] = useState('');
     const handleCredentials = async () => {
         const credentials = await getUserCredentials();
-        console.log(credentials)
         if (credentials) {
             setFullName(credentials.fullName);
             setRole(credentials.role);
@@ -26,7 +25,7 @@ export function GlobalProvider({children} : {children: React.ReactNode}) {
 
     useEffect(() => {
         handleCredentials()
-            .then(r => console.log(r))
+            .then();
     }, [fullName, role]);
 
     return (

@@ -3,34 +3,42 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {ForgotPasswordSchema} from "@/lib/validation";
+import {VerifyEmailSchema} from "@/lib/validation";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {forgotPassword} from "@/lib/actions/user.action";
+import {verifyEmail} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {LoadingSpinner} from "@/components/shared/LoadingSpinner";
 import Link from "next/link";
+import {useRouter, useSearchParams} from "next/navigation";
 
 const VerifyEmailForm = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [message, setMessage] = useState<string | null>(null)
-    const form = useForm<z.infer<typeof ForgotPasswordSchema>>({
-        resolver: zodResolver(ForgotPasswordSchema),
+    const form = useForm<z.infer<typeof VerifyEmailSchema>>({
+        resolver: zodResolver(VerifyEmailSchema),
         defaultValues: {
-            email: ""
+            email: searchParams.get('email') as string,
+            token: searchParams.get('token') as string,
         },
     })
 
-    async function onSubmit(values: z.infer<typeof ForgotPasswordSchema>) {
+    async function onSubmit(values: z.infer<typeof VerifyEmailSchema>) {
         setIsSubmitting(true)
         try {
-            const res = await forgotPassword(values);
+            const res = await verifyEmail(values);
 
             if (!isErrorResponseValue(res)) {
-                setMessage("We have sent you an email to reset your password.");
+                setMessage("Verification successful.");
+
+                setInterval(() => {
+                    router.push('/login');
+                }, 3000);
                 return;
             }
             setError(res.detail);
@@ -51,7 +59,7 @@ const VerifyEmailForm = () => {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="Input your email" {...field} />
+                                <Input readOnly={true} placeholder="" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -70,7 +78,7 @@ const VerifyEmailForm = () => {
                     type="submit"
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? <LoadingSpinner/> : "Submit"}
+                    {isSubmitting ? <LoadingSpinner/> : "Verify"}
                 </Button>
 
                 <FormMessage className="text-center text-black">

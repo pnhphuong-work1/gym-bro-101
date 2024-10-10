@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 export function getAxiosClient() {
   return axios.create({
     // baseURL: process.env.NEXT_PUBLIC_API_URL,
-    baseURL: "https://localhost:7294/api/",
+    baseURL: "https://vk2pgym.azurewebsites.net/api/",
     headers: {
         "Content-Type": "application/json",
     }
