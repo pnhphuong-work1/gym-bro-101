@@ -1,7 +1,8 @@
+'use client';
+
 import React from 'react';
 import {
     CircleUser,
-    Users,
 } from "lucide-react";
 import {
     DropdownMenu,
@@ -11,13 +12,18 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
+import {useGlobalContext} from "@/context/GlobalContext";
 
 const UserDropDown = () => {
+    const {fullName} = useGlobalContext();
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="secondary" size="icon" className="rounded-full">
-                    <CircleUser className="h-5 w-5" />
+                <Button variant="secondary"
+                        className="sm:rounded-full"
+                >
+                    <CircleUser className="md:hidden h-5 w-5" />
+                    <p className="sm:hidden">{fullName}</p>
                     <span className="sr-only">Toggle user menu</span>
                 </Button>
             </DropdownMenuTrigger>

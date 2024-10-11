@@ -3,12 +3,13 @@ import Link from "next/link";
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
 import {Menu} from "lucide-react";
+import UserDropDown from "@/components/shared/UserDropDown";
 
-const DashboardNav = () => {
+const AdminDashboardNav = () => {
     return (
         <div className="flex h-full w-full flex-col">
             <header
-                className="bg-blue-200 sticky top-0 flex h-16 items-center gap-4 border-b border-black bg-background px-4 md:px-6">
+                className="bg-blue-200 sticky top-0 flex flex-row justify-between h-16 items-center gap-4 border-b border-black bg-background px-4 md:px-6">
                 <nav
                     className="hidden flex-col justify-center gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                     <Link
@@ -55,9 +56,11 @@ const DashboardNav = () => {
                         </nav>
                     </SheetContent>
                 </Sheet>
+
+                <UserDropDown />
             </header>
         </div>
     );
 };
 
-export default DashboardNav;
+export default AdminDashboardNav;
