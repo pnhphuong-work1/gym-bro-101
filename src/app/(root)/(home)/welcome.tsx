@@ -6,7 +6,7 @@ const Welcome = () => {
             <h1 className='text-7xl mt-4' style={{fontFamily: 'Monda, sans-serif'}}>Welcome</h1>
             <div className="w-[10%] h-0.5 bg-red-600 mt-4"></div>
             <h2 className='mt-5 text-xl'>Welcome to the website VK2P Gym! We hope that you will appreciate our services and opportunities we offer our loyal and potential customers. Here are some of them:</h2>
-            <div className="flex justify-between items-center w-[90%] h-[50%] mt-28">
+            <div className="flex justify-between items-center w-[90%] h-[50%] mt-20">
                 <div className="relative w-[25%] border-2 border-black flex flex-col items-center justify-center">
                     <div
                         className="absolute bg-black top-[-60px] left-1/2 transform -translate-x-1/2 w-28 h-28 rounded-full border-2 border-black flex items-center justify-center">

@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 
 const Footer = () => {
     return (
-        <div className='bg-black w-full flex justify-between items-center h-full py-10'>
+        <div className='bg-black w-full flex justify-between items-center h-full py-8'>
             <div className='flex flex-col justify-center items-center'>
             <Logo />
                 <div className='flex ml-20 mt-3'>
