@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 const Header = () => {
     return (
@@ -29,9 +30,12 @@ const Header = () => {
                 <h3>Lô E2a-7, Đường D1 Khu Công nghệ cao, P. Long Thạnh Mỹ, TP. Thủ Đức</h3>
             </div>
             <div>
-                <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>
-                    LOGIN
-                </Button>
+                <Link href='/login'>
+                    <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>
+                        LOGIN
+                    </Button>
+                </Link>
+
             </div>
         </div>
     );
