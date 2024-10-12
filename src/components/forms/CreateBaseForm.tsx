@@ -15,9 +15,10 @@ interface CreateBaseFormProps {
     isSubmitting: boolean;
     message: string | null;
     error: string | null;
+    validationError?: string[] | null;
 }
 
-const CreateBaseForm = ({form, onSubmit, isSubmitting, message, error}: CreateBaseFormProps) => {
+const CreateBaseForm = ({form, onSubmit, isSubmitting, message, error, validationError}: CreateBaseFormProps) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -143,13 +144,25 @@ const CreateBaseForm = ({form, onSubmit, isSubmitting, message, error}: CreateBa
                     )}
                 />
 
-                <FormMessage>
-                    {message}
-                </FormMessage>
+                {message && (
+                    <FormMessage className="text-green-500">
+                        {message}
+                    </FormMessage>
+                )}
 
-                <FormMessage>
-                    {error}
-                </FormMessage>
+                {validationError && (
+                    <FormMessage>
+                        {validationError.map((e, index) => (
+                            <div key={index}>{e}</div>
+                        ))}
+                    </FormMessage>
+                )}
+
+                {error && (
+                    <FormMessage>
+                        {error}
+                    </FormMessage>
+                )}
 
                 <Button
                     type="submit"

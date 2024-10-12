@@ -11,6 +11,7 @@ const CreateManagerForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [message, setMessage] = useState<string | null>(null)
+    const [validationError, setValidationError] = useState<string[] | null>(null)
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
         defaultValues: {
@@ -33,7 +34,11 @@ const CreateManagerForm = () => {
                 setError(null);
                 return;
             }
-            setError(res.detail);
+            if (res.errors && res.errors.length > 0) {
+                setValidationError(res.errors.map((e) => e.message));
+            } else {
+                setError(res.detail);
+            }
         } catch (error) {
             console.error(error)
         } finally {
@@ -46,6 +51,7 @@ const CreateManagerForm = () => {
             form={form}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            validationError={validationError}
             message={message}
             error={error}
         />

@@ -12,6 +12,7 @@ import CreateBaseForm from "@/components/forms/CreateBaseForm";
 const RegisterForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [validationError, setValidationError] = useState<string[] | null>(null)
     const [message, setMessage] = useState<string | null>(null)
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
@@ -35,7 +36,12 @@ const RegisterForm = () => {
                 setError(null);
                 return;
             }
-            setError(res.detail);
+            console.log(res.errors)
+            if (res.errors && res.errors.length > 0) {
+                setValidationError(res.errors.map((e) => e.message));
+            } else {
+                setError(res.detail);
+            }
         } catch (error) {
             console.error(error)
         } finally {
@@ -50,6 +56,7 @@ const RegisterForm = () => {
             isSubmitting={isSubmitting}
             message={message}
             error={error}
+            validationError={validationError}
         />
     );
 };

@@ -15,7 +15,8 @@ export async function login({ email, password } : { email: string, password: str
         if (response.status === 200) {
             cookies().set('tokens', JSON.stringify(response.data.value), {
                path: '/',
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3), // 3 days
+                // Set the expiration date to 3 hours
+                expires: new Date(Date.now() + 1000 * 60 * 60 * 3),
             });
         }
         return response.data;
@@ -38,7 +39,8 @@ export async function silentLogin(accessToken: string, refreshToken: string) {
         if (response.status === 200) {
             cookies().set('tokens', JSON.stringify(response.data.value), {
                 path: '/',
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3), // 3 days expiration
+                // Set the expiration date to 3 hours
+                expires: new Date(Date.now() + 1000 * 60 * 60 * 3),
             });
         }
 
@@ -51,7 +53,7 @@ export async function silentLogin(accessToken: string, refreshToken: string) {
     }
 }
 
-export async function getUserCredentials() {
+export async function getUserCredentials(allowRedirect: boolean = true) {
     const cookieStore = cookies();  // Using next/headers cookies API on the server side
     const credentials = cookieStore.get('tokens')?.value;
 
@@ -69,7 +71,10 @@ export async function getUserCredentials() {
                 if (!isErrorResponseValue(res)) return res.value;
             } else {
                 // If both tokens expired, redirect to login page
-                redirect('/login');  // Use Next.js server-side redirect
+                if (allowRedirect)
+                    redirect('/login');  // Use Next.js server-side redirect
+
+                return null;
             }
         }
 
@@ -77,6 +82,8 @@ export async function getUserCredentials() {
         return cre;
     }
 
-    // No tokens found, redirect to login
-    redirect('/login');  // Server-side redirect
+    if (allowRedirect)
+        redirect('/login');  // Redirect to login page if no tokens found
+
+    return null;
 }

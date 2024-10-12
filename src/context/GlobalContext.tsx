@@ -16,7 +16,7 @@ export function GlobalProvider({children} : {children: React.ReactNode}) {
     const [fullName, setFullName] = useState('');
     const [role, setRole] = useState('');
     const handleCredentials = async () => {
-        const credentials = await getUserCredentials();
+        const credentials = await getUserCredentials(false);
         if (credentials) {
             setFullName(credentials.fullName);
             setRole(credentials.role);
