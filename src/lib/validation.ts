@@ -9,8 +9,9 @@ export const RegisterSchema = z.object({
     email: z.string().email("Please enter a valid email"),
     password: z.string().min(1, "Please enter a password"),
     confirmPassword: z.string().min(1, "Please confirm your password"),
+    phoneNumber: z.string().min(1, "Please enter a phone number"),
     fullName: z.string().min(1, "Please enter your full name"),
-    dateOfBirth: z.date({
+    dob: z.date({
         message: "Please enter a valid date of birth",
     }),
 }).refine((data) => data.password === data.confirmPassword, {

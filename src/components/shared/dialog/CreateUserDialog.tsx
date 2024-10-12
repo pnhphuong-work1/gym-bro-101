@@ -7,7 +7,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import {Button} from "@/components/ui/button";
-import RegisterForm from "@/components/forms/RegisterForm";
+import CreateManagerForm from "@/components/forms/CreateManagerForm";
 const CreateUserDialog = () => {
     return (
         <Dialog>
@@ -23,7 +23,7 @@ const CreateUserDialog = () => {
                 <DialogHeader>
                     <DialogTitle>Create User</DialogTitle>
                 </DialogHeader>
-                <RegisterForm />
+                <CreateManagerForm />
             </DialogContent>
         </Dialog>
     );

@@ -41,8 +41,8 @@ export interface AuthResponseValue {
     refreshToken: string;
     role: string;
     fullName: string;
-    AccessTokenExpiration: Date;
-    RefreshTokenExpiration: Date;
+    accessTokenExpiration: Date;
+    refreshTokenExpiration: Date;
 }
 
 export interface UserResponseValue {

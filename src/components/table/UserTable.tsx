@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import CreateUserDialog from "@/components/shared/dialog/CreateUserDialog";
 import {Pagination, PaginationContent, PaginationItem, PaginationPrevious} from "@/components/ui/pagination";
+import PaginationBase from "@/components/shared/PaginationBase";
 
 const UserTableHeader = [
     { name: 'Id' },
@@ -105,34 +106,14 @@ const UserTable = () => {
                 </Table>
             </CardContent>
             <CardFooter>
-                <Pagination>
-                    <PaginationContent>
-                        <PaginationItem>
-                            {hasPrevPage && (
-                                <PaginationPrevious
-                                    onClick={() => setPage(page - 1)}
-                                />
-                            )}
-                        </PaginationItem>
-                        {Array.from({ length: Math.ceil(totalCounts / limit) }).map((_, index) => (
-                            <PaginationItem key={index}>
-                                <Button
-                                    className="w-8 h-8"
-                                    onClick={() => setPage(index + 1)}
-                                >
-                                    {index + 1}
-                                </Button>
-                            </PaginationItem>
-                        ))}
-                        <PaginationItem>
-                            {hasNextPage && (
-                                <PaginationPrevious
-                                    onClick={() => setPage(page + 1)}
-                                />
-                            )}
-                        </PaginationItem>
-                    </PaginationContent>
-                </Pagination>
+                <PaginationBase
+                    page={page}
+                    setPage={setPage}
+                    totalCounts={totalCounts}
+                    limit={limit}
+                    hasNextPage={hasNextPage}
+                    hasPrevPage={hasPrevPage}
+                />
             </CardFooter>
         </Card>
     );
