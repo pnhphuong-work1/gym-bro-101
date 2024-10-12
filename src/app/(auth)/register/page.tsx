@@ -1,6 +1,7 @@
 import React from 'react';
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import RegisterForm from "@/components/forms/RegisterForm";
+import Link from "next/link";
 
 const RegisterPage = () => {
     return (
@@ -12,6 +13,19 @@ const RegisterPage = () => {
                 <CardContent>
                     <RegisterForm />
                 </CardContent>
+                <CardFooter>
+                    <p
+                        className="text-center text-sm"
+                    >
+                        Already have an account?
+                        <Link
+                            className="text-blue-500 p-2 hover:underline"
+                            href={"/login"}
+                        >
+                            Login
+                        </Link>
+                    </p>
+                </CardFooter>
             </Card>
         </div>
     );

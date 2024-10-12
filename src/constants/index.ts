@@ -1,18 +1,18 @@
 export const adminNavLinks = [
     {
         name: "Home",
-        href: "/admin/dashboard"
+        href: "/admin/dashboard/home"
     },
     {
         name: "Revenue",
-        href: "admin/dashboard/revenue"
+        href: "/admin/dashboard/revenue"
     },
     {
         name: "Staff",
-        href: "admin/dashboard/staff"
+        href: "/admin/dashboard/staff"
     },
     {
         name: "Customer",
-        href: "admin/dashboard/customer"
+        href: "/admin/dashboard/customer"
     }
 ];

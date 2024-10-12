@@ -21,7 +21,9 @@ const UserDropDown = () => {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="secondary"
-                        className="rounded-full md:rounded-lg flex items-center gap-2 px-4 py-2 bg-blue-300 hover:bg-blue-400 transition-colors duration-200 ease-in-out"
+                        className="rounded-full md:rounded-lg flex items-center gap-2 px-4 py-2
+                        bg-red-500 hover:text-yellow-100 transition-colors
+                        duration-200 ease-in-out"
                 >
                     <CircleUser className="h-5 w-5 md:hidden"/>
                     <p className="hidden md:flex">

@@ -1,7 +1,7 @@
 'use server';
 
 import {getAxiosClient} from "@/lib/utils";
-import {BaseResponseValue, ErrorResponseValue, UserResponseValue} from "@/types";
+import {BasePaginationResponseValue, BaseResponseValue, ErrorResponseValue, UserResponseValue} from "@/types";
 
 export async function register({ email, password, dateOfBirth, fullName, confirmPassword } : { email: string, dateOfBirth: Date, password: string, fullName: string, confirmPassword: string }) {
     const axios = getAxiosClient();
@@ -49,6 +49,27 @@ export async function verifyEmail({ email, token } : { email: string, token: str
 
         return response.data;
 
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+export async function getAllManagers(search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
+    const axios = getAxiosClient();
+    try {
+        const response = await axios
+            .get<BasePaginationResponseValue<UserResponseValue>>('v2024-09-19/managers', {
+                params: {
+                    search,
+                    searchBy,
+                    sortOrder,
+                    sortBy,
+                    currentPage,
+                    pageSize
+                }
+            });
+
+        return response.data;
     } catch (error : any) {
         return error.response.data as ErrorResponseValue;
     }

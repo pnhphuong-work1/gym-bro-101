@@ -176,16 +176,6 @@ const RegisterForm = () => {
                 >
                     {isSubmitting ? <LoadingSpinner/> : "Submit"}
                 </Button>
-
-                <FormMessage className="text-center text-black">
-                    Already have an account?
-                    <Link
-                        className="text-blue-500 p-2 hover:underline"
-                        href={"/login"}
-                    >
-                        Login
-                    </Link>
-                </FormMessage>
             </form>
         </Form>
     );
