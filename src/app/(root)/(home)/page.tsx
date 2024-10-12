@@ -42,7 +42,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className='h-lvh'>
-                <div ref={welcomeRef} className='h-[50%]'>
+                <div ref={welcomeRef} className='h-[50%] bg-white'>
                     <Welcome/>
                 </div>
                 <div className='h-[50%]'>

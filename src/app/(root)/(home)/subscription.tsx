@@ -28,7 +28,7 @@ const Subscription = () => {
                     <p className="text-center text-4xl font-bold">T2, T4, T6</p>
                     <div className="w-[80%] h-0.5 bg-white mt-4"></div>
                     <div className='flex mt-5'>
-                        <h2 className='text-5xl text-[#E0E84F]'>59$</h2>
+                        <h2 className='text-5xl  text-[#E0E84F]'>59$</h2>
                         <p className='text-white text-xl'>/month</p>
                     </div>
                     <Button className='bg-white text-red-600 mt-8 text-4xl py-8'>
