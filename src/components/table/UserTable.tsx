@@ -11,13 +11,14 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import CreateManagerDialog from "@/components/shared/dialog/CreateManagerDialog";
 import PaginationBase from "@/components/shared/PaginationBase";
+import {CaretSortIcon} from "@radix-ui/react-icons";
 
 const UserTableHeader = [
-    { name: 'Id' },
-    { name: 'Full Name' },
-    { name: 'Email' },
-    { name: 'Phone Number' },
-    { name: 'Action' }
+    { name: 'Id', sortable: false, sortKey: 'id' },
+    { name: 'Full Name', sortable: true, sortKey: 'fullName' },
+    { name: 'Email', sortable: true, sortKey: 'email' },
+    { name: 'Phone Number', sortable: true, sortKey: 'phoneNumber' },
+    { name: 'Action', sortable: false, sortKey: 'action' },
 ];
 
 const UserTable = () => {
@@ -29,10 +30,21 @@ const UserTable = () => {
     const [hasNextPage, setHasNextPage] = useState<boolean>(false);
     const [hasPrevPage, setHasPrevPage] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
+    const [sortBy, setSortBy] = useState<string>('email');
+    const [sortOrder, setSortOrder] = useState<string>('asc');
+
+    const handleChangeSort = (sortKey: string) => {
+        if (sortKey === sortBy) {
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortBy(sortKey);
+            setSortOrder('asc');
+        }
+    }
 
     useEffect(() => {
         setLoading(true);
-        getAllManagers(search, 'fullName', 'asc', 'fullName', page, limit)
+        getAllManagers(search, 'fullName', sortOrder, sortBy, page, limit)
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
                     setUsers(response.value.items);
@@ -49,7 +61,7 @@ const UserTable = () => {
             .finally(() => {
                 setLoading(false); // Set loading to false after fetching data
             });
-    }, [page, search]);
+    }, [page, search, sortBy, sortOrder]);
 
     return (
         <Card>
@@ -62,7 +74,18 @@ const UserTable = () => {
                     <TableHeader>
                         <TableRow>
                             {UserTableHeader.map((header, index) => (
-                                <TableHead key={index}>{header.name}</TableHead>
+                                <TableHead key={index}>
+                                    {header.sortable ? (
+                                        <Button
+                                            variant="ghost"
+                                            className={`flex items-center justify-center gap-1 ${sortBy === header.sortKey ? 'text-blue-500' : 'text-gray-500'}`}
+                                            onClick={() => handleChangeSort(header.sortKey)}
+                                        >
+                                            {header.name}
+                                            <CaretSortIcon className="ml-2 w-4 h-4" />
+                                        </Button>
+                                    ) : header.name }
+                                </TableHead>
                             ))}
                         </TableRow>
                     </TableHeader>
