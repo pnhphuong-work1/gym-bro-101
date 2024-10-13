@@ -1,8 +1,42 @@
+'use client';
+
 import React from 'react';
 import {Button} from "@/components/ui/button";
+import {useGlobalContext} from "@/context/GlobalContext";
 import Link from "next/link";
 
 const Header = () => {
+    const {fullName, role} = useGlobalContext();
+
+    const buttonByRole = () => {
+        switch (role) {
+            case 'Admin':
+                return (
+                    <Link href='/admin/dashboard/staff'>
+                        <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>{fullName}</Button>
+                    </Link>
+                );
+            case 'Manager':
+                return (
+                    <Link href='/admin/dashboard/staff'>
+                        <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>{fullName}</Button>
+                    </Link>
+                );
+            case 'Customer':
+                return (
+                    <Link href='/profile'>
+                        <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>{fullName}</Button>
+                    </Link>
+                );
+            default:
+                return (
+                    <Link href='/login'>
+                        <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>Login</Button>
+                    </Link>
+                );
+        }
+    }
+
     return (
         <div className='bg-red-600 h-[10%] w-full top-0 flex items-center justify-between'>
             <div className='text-white font-bold flex ml-20'>
@@ -30,12 +64,9 @@ const Header = () => {
                 <h3>Lô E2a-7, Đường D1 Khu Công nghệ cao, P. Long Thạnh Mỹ, TP. Thủ Đức</h3>
             </div>
             <div>
-                <Link href='/login'>
-                    <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>
-                        LOGIN
-                    </Button>
-                </Link>
-
+                {
+                    buttonByRole()
+                }
             </div>
         </div>
     );
