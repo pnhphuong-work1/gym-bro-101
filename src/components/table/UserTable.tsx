@@ -9,7 +9,7 @@ import { isErrorResponseValue } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
-import CreateUserDialog from "@/components/shared/dialog/CreateUserDialog";
+import CreateManagerDialog from "@/components/shared/dialog/CreateManagerDialog";
 import PaginationBase from "@/components/shared/PaginationBase";
 
 const UserTableHeader = [
@@ -55,7 +55,7 @@ const UserTable = () => {
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
                 <CardTitle>Manager Dashboard</CardTitle>
-                <CreateUserDialog />
+                <CreateManagerDialog />
             </CardHeader>
             <CardContent>
                 <Table>

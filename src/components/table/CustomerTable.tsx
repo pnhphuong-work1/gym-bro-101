@@ -1,27 +1,29 @@
+'use client';
+
 import React, {useEffect, useState} from 'react';
-import {UserResponseValue} from "@/types";
-import {getAllManagers} from "@/lib/actions/user.action";
+import {CustomerResponseValue} from "@/types";
+import {getAllCustomers} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import CreateUserDialog from "@/components/shared/dialog/CreateUserDialog";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Skeleton} from "@/components/ui/skeleton";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import PaginationBase from "@/components/shared/PaginationBase";
+import CreateCustomerDialog from "@/components/shared/dialog/CreateCustomerDialog";
 
 const CustomerTableHeader = [
     { name: 'Id' },
     { name: 'Full Name' },
     { name: 'Email' },
     { name: 'Phone Number' },
-    { name: 'Spend Time' },
-    {name: 'Payment'},
+    { name: 'Spent Time (Hours)' },
+    {name: 'Payment (VNĐ)'},
     { name: 'Action' }
 ]
 
 const CustomerTable = () => {
-    const [users, setUsers] = useState<UserResponseValue[]>([]);
+    const [users, setUsers] = useState<CustomerResponseValue[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
     const [totalCounts, setTotalCounts] = useState<number>(1);
@@ -32,7 +34,7 @@ const CustomerTable = () => {
 
     useEffect(() => {
         setLoading(true);
-        getAllManagers(search, 'fullName', 'asc', 'fullName', page, limit)
+        getAllCustomers(search, 'fullName', 'asc', 'fullName', page, limit)
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
                     setUsers(response.value.items);
@@ -55,7 +57,7 @@ const CustomerTable = () => {
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
                 <CardTitle>Manager Dashboard</CardTitle>
-                <CreateUserDialog />
+                <CreateCustomerDialog />
             </CardHeader>
             <CardContent>
                 <Table>
@@ -80,14 +82,16 @@ const CustomerTable = () => {
                                     <TableCell>{user.fullName}</TableCell>
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell>{user.phoneNumber}</TableCell>
+                                    <TableCell>{user.totalSpentTime}</TableCell>
+                                    <TableCell>{user.totalPayment}</TableCell>
                                     <TableCell className="flex gap-3">
                                         <Button className="bg-blue-200 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${user.id}`}>
+                                            <Link href={`/admin/dashboard/customer/${user.id}`}>
                                                 Edit
                                             </Link>
                                         </Button>
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${user.id}`}>
+                                            <Link href={`/admin/dashboard/customer/${user.id}`}>
                                                 Delete
                                             </Link>
                                         </Button>
@@ -115,6 +119,7 @@ const CustomerTable = () => {
                 />
             </CardFooter>
         </Card>
+    );
 };
 
 export default CustomerTable;

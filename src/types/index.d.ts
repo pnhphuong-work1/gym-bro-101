@@ -52,3 +52,13 @@ export interface UserResponseValue {
     fullName: string;
     phoneNumber: string;
 }
+
+export interface CustomerResponseValue {
+    id: string;
+    email: string;
+    userName: string;
+    fullName: string;
+    phoneNumber: string;
+    totalSpentTime: number;
+    totalPayment: number;
+}
