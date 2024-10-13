@@ -11,7 +11,7 @@ import Welcome from "@/app/(root)/(home)/welcome";
 import Subscription from "@/app/(root)/(home)/subscription";
 
 const HomePage = () => {
-    const welcomeRef = useRef<HTMLDivElement>(null);;
+    const welcomeRef = useRef<HTMLDivElement>(null);  
     const {fullName} = useGlobalContext();
     console.log(fullName)
     const scrollToWelcome = () => {
