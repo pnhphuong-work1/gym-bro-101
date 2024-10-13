@@ -11,7 +11,7 @@ import Welcome from "@/app/(root)/(home)/welcome";
 import Subscription from "@/app/(root)/(home)/subscription";
 
 const HomePage = () => {
-    const welcomeRef = useRef<HTMLDivElement>(null);;
+    const welcomeRef = useRef<HTMLDivElement>(null);  
     const {fullName} = useGlobalContext();
     console.log(fullName)
     const scrollToWelcome = () => {
@@ -41,13 +41,13 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-lvh'>
-                <div ref={welcomeRef} className='h-[50%]'>
+            <div>
+                <div ref={welcomeRef} className='h-[60%] bg-white'>
                     <Welcome/>
                 </div>
                 <div className='h-[50%]'>
                     <Subscription />
-                </div>
+                </div> 
             </div>
             <Footer/>
         </div>

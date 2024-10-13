@@ -93,15 +93,16 @@ const LoginForm = () => {
                     {error}
                 </FormMessage>
 
-                <Button
+                <Button 
                     type="submit"
                     disabled={isSubmitting}
+                    className='text-2xl text-white bg-red-500 w-full py-2'
                 >
-                    {isSubmitting ? <LoadingSpinner/> : "Submit"}
+                    {isSubmitting ? <LoadingSpinner/> : "Login"}
                 </Button>
 
                 <FormMessage className="text-center text-black">
-                    Don&amp;t have an account?
+                    Don not have an account?
                     <Link
                         className="text-blue-500 p-2 hover:underline"
                         href={"/register"}
