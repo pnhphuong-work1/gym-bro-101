@@ -62,3 +62,11 @@ export interface CustomerResponseValue {
     totalSpentTime: number;
     totalPayment: number;
 }
+export interface SubscriptionResponseValue {
+    id: string;
+    name: string;
+    totalWorkoutTime: string;
+    price: number;
+    dayGroupId: string;
+    group: string;
+}
