@@ -95,7 +95,7 @@ const CustomerTable = () => {
                     <TableBody>
                         {loading ? (
                             <TableRow>
-                                <TableCell colSpan={5} className="text-center">
+                                <TableCell colSpan={7} className="text-center">
                                     <Skeleton className="w-full h-[30px] rounded-full"/>
                                 </TableCell>
                             </TableRow>
