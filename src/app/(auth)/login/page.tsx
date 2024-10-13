@@ -1,9 +1,22 @@
-import React from 'react';
+'use client';
+
+import React, {useEffect} from 'react';
 import LoginForm from "@/components/forms/LoginForm";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {useGlobalContext} from "@/context/GlobalContext";
+import {useRouter} from "next/navigation";
 
 
 const LoginPage = () => {
+    const router = useRouter();
+    const {role, loading} = useGlobalContext();
+
+    useEffect(() => {
+        if (role === 'Admin' && !loading) {
+            router.push('/admin/dashboard/staff');  // Only perform this redirection on the client side
+        }
+    }, [role, router, loading]);  // Trigger this effect when `role` or `router` changes
+
     return (
         <div className="flex min-h-screen w-full items-center justify-center">
             <Card className="w-full max-w-md p-8">
