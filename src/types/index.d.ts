@@ -8,6 +8,23 @@ export interface BaseResponseValue<T> {
     value: T;
 }
 
+export interface BasePaginationResponseValue<T> {
+    value: {
+        items: T[];
+        pageIndex: number;
+        pageSize: number;
+        totalCount: number;
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
+    },
+    isSuccess: boolean;
+    isFailure: boolean;
+    error: {
+        code: number;
+        message: string;
+    },
+}
+
 export interface ErrorResponseValue {
     type: string;
     title: string;
@@ -24,8 +41,8 @@ export interface AuthResponseValue {
     refreshToken: string;
     role: string;
     fullName: string;
-    AccessTokenExpiration: Date;
-    RefreshTokenExpiration: Date;
+    accessTokenExpiration: Date;
+    refreshTokenExpiration: Date;
 }
 
 export interface UserResponseValue {

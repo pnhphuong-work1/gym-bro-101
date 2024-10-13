@@ -1,19 +1,17 @@
-'use client';
-
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {RegisterSchema} from "@/lib/validation";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {register} from "@/lib/actions/user.action";
+import {createManager} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import CreateBaseForm from "@/components/forms/CreateBaseForm";
 
-const RegisterForm = () => {
+const CreateManagerForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [validationError, setValidationError] = useState<string[] | null>(null)
     const [message, setMessage] = useState<string | null>(null)
+    const [validationError, setValidationError] = useState<string[] | null>(null)
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
         defaultValues: {
@@ -29,14 +27,13 @@ const RegisterForm = () => {
         setIsSubmitting(true)
         try {
             // Add your register logic here
-            const res = await register(values);
+            const res = await createManager(values);
 
             if (!isErrorResponseValue(res)) {
                 setMessage("Registration successful! Check your email to verify your account.");
                 setError(null);
                 return;
             }
-            console.log(res.errors)
             if (res.errors && res.errors.length > 0) {
                 setValidationError(res.errors.map((e) => e.message));
             } else {
@@ -54,11 +51,11 @@ const RegisterForm = () => {
             form={form}
             onSubmit={onSubmit}
             isSubmitting={isSubmitting}
+            validationError={validationError}
             message={message}
             error={error}
-            validationError={validationError}
         />
     );
 };
 
-export default RegisterForm;
+export default CreateManagerForm;

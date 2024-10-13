@@ -1,10 +1,24 @@
-import React from 'react';
+'use client';
+
+import React, {useEffect} from 'react';
 import LoginForm from "@/components/forms/LoginForm";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {useGlobalContext} from "@/context/GlobalContext";
+import {useRouter} from "next/navigation";
+
 import BgLogin from "@/public/asset/bg_login.png";
 import Link from "next/link";
 
 const LoginPage = () => {
+    const router = useRouter();
+    const {role, loading} = useGlobalContext();
+
+    useEffect(() => {
+        if (role === 'Admin' && !loading) {
+            router.push('/admin/dashboard/staff');  // Only perform this redirection on the client side
+        }
+    }, [role, router, loading]);  // Trigger this effect when `role` or `router` changes
+
     return (
         <div
             className="relative bg-cover bg-center flex flex-col items-center justify-center flex-grow"
