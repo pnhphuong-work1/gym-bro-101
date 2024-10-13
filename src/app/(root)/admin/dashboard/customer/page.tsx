@@ -6,7 +6,7 @@ const CustomerPage = () => {
     return (
         <div className="flex flex-col min-h-screen w-full bg-white">
             <AdminDashboardNav/>
-            <ManagerDashboard/>
+            <ManagerDashboard />
         </div>
     );
 };

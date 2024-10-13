@@ -1,10 +1,10 @@
 import React from 'react';
-import UserTable from "@/components/table/UserTable";
+import CustomerTable from "@/components/table/CustomerTable";
 
 const CustomerDashboard = () => {
     return (
         <div className="container mx-auto py-10">
-            <UserTable/>
+            <CustomerTable />
         </div>
     );
 };

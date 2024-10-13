@@ -53,37 +53,26 @@ export async function silentLogin(accessToken: string, refreshToken: string) {
     }
 }
 
-export async function getUserCredentials(allowRedirect: boolean = true) {
+export async function getUserCredentials() {
     const cookieStore = cookies();  // Using next/headers cookies API on the server side
     const credentials = cookieStore.get('tokens')?.value;
 
     if (credentials) {
         const cre = JSON.parse(credentials) as AuthResponseValue;
 
-        // Convert accessTokenExpiration and refreshTokenExpiration to Date objects
         const expirationDate = new Date(cre.accessTokenExpiration);
         const refreshTokenExpiration = new Date(cre.refreshTokenExpiration);
 
         if (expirationDate.getTime() < Date.now()) {
-            // If access token expired, check if the refresh token is still valid
             if (refreshTokenExpiration.getTime() > Date.now()) {
                 const res = await silentLogin(cre.accessToken, cre.refreshToken);
                 if (!isErrorResponseValue(res)) return res.value;
             } else {
-                // If both tokens expired, redirect to login page
-                if (allowRedirect)
-                    redirect('/login');  // Use Next.js server-side redirect
-
                 return null;
             }
         }
-
-        // If tokens are valid, return credentials
-        return cre;
+        return cre; // Return credentials if valid
     }
 
-    if (allowRedirect)
-        redirect('/login');  // Redirect to login page if no tokens found
-
-    return null;
+    return null; // No tokens found
 }
