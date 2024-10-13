@@ -7,7 +7,7 @@ const Welcome = () => {
             <h1 className='text-7xl mt-3' style={{fontFamily: 'Monda, sans-serif'}}>Welcome</h1>
             <div className="w-[10%] h-0.5 bg-red-600 mt-3"></div>
             <h2 className='mt-5 text-xl w-[60%]'>Welcome to the website VK2P Gym! We hope that you will appreciate our services and opportunities we offer our loyal and potential customers. Here are some of them:</h2>
-            <div className="flex justify-between items-center w-[90%] h-[50%] mt-10">
+            <div className="flex justify-between items-center w-[90%] h-[50%] mt-14">
                 <div className="relative w-[30%] border-2 border-black flex flex-col items-center justify-center">
                     <div
                         className="absolute bg-black top-[-60px] left-1/2 transform -translate-x-1/2 w-28 h-28 rounded-full border-2 border-black flex items-center justify-center">
@@ -50,7 +50,7 @@ const Welcome = () => {
                     </div>
 
                     <p className="text-center text-xl font-bold text-red-500 mt-14">Modern Fitness Equipment</p>
-                    <p className="text-center text-xl my-3 mx-3">We cooperate with leading fitness equipment suppliers
+                    <p className="text-center text-xl my-3 mx-3">Leading fitness equipment suppliers
                         to give you the superior results
                     </p>
                 </div>
