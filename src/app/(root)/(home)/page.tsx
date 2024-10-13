@@ -41,13 +41,13 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-lvh'>
-                <div ref={welcomeRef} className='h-[50%] bg-white'>
+            <div>
+                <div ref={welcomeRef} className='h-[60%] bg-white'>
                     <Welcome/>
                 </div>
                 <div className='h-[50%]'>
                     <Subscription />
-                </div>
+                </div> 
             </div>
             <Footer/>
         </div>
