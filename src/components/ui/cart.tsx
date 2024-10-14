@@ -1,7 +1,6 @@
 import React from "react";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "./table"; // Import your table components
 import Container from "./container"; // Import the Container component
-import { Button }from "./button";
 
 interface Subscription {
     id: string;
@@ -16,7 +15,7 @@ interface CartProps {
     onBuy: (id: string) => void; // Callback function to handle the buy action
 }
 
-const Cart: React.FC<CartProps> = ({ subscriptions, onBuy }) => {
+const Cart: React.FC<CartProps> = ({ subscriptions }) => {
     return (
         <Container className="bg-white shadow-md rounded-lg p-4">
             <Table>

@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Logo from "@/components/shared/Logo";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
 import {useGlobalContext} from "@/context/GlobalContext";
 
 interface HomeNavProps {
@@ -41,7 +40,7 @@ const HomeNav = ({isSticky, status}: HomeNavProps) => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#about" className="hover:text-gray-300">SCHEDULE</a>
+                                <a href="/" className="hover:text-gray-300">SCHEDULE</a>
                             </li>
                         </ul>
                     </nav>

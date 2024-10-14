@@ -4,26 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="fix bugs">
-      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/cart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/container.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/context/SubscriptionContext.tsx" afterDir="false" />
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728894717239</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail">
+      <option name="closed" value="true" />
+      <created>1728919157219</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728919157219</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +141,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding sort in table" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
