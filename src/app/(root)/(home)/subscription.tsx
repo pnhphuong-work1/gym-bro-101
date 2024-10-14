@@ -3,18 +3,21 @@ import {Button} from "@/components/ui/button";
 import {SubscriptionResponseValue} from "@/types";
 import {isErrorResponseValue} from "@/lib/utils";
 import {getAllSubscriptions} from "@/lib/actions/subscription.action";
+import {useRouter} from "next/navigation";
+import {useUserSubscriptionContext} from "@/context/SubscriptionContext";
 
 const Subscription = () => {
 
     const [subscriptions, setSubscriptions] = useState<SubscriptionResponseValue[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-
+    const router = useRouter();
+    const { setSubscriptionId } = useUserSubscriptionContext();
     useEffect(() => {
         setLoading(true);
         getAllSubscriptions()
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
-                    setSubscriptions(response.value.items); // Store the subscription items
+                    setSubscriptions(response.value.items);
                 }
             })
             .catch((error) => {
@@ -24,9 +27,16 @@ const Subscription = () => {
                 setLoading(false); // Set loading to false after fetching data
             });
     }, []);
+
     if (loading) return <div>Loading...</div>;
     if (!subscriptions || subscriptions.length !== 3) return <div>Error: Expected 3 subscriptions.</div>;
     const [first, second, third] = subscriptions;
+
+    const handleBuyNow = (subscriptionId: string) => {
+        setSubscriptionId(subscriptionId);
+        router.push(`/customer/subscription-detail`);
+    };
+
     return (
         <div className='bg-red-500 w-full h-full flex flex-col items-center justify-center pb-10'>
             <h1 className='text-7xl mt-2 text-white' style={{fontFamily: 'Monda, sans-serif'}}>Choose your plan</h1>
@@ -44,7 +54,10 @@ const Subscription = () => {
                         <h2 className='text-4xl'>{third.price}$</h2>
                         <p className='text-white text-xl'>/month</p>
                     </div>
-                    <Button className='bg-white text-black mt-8 text-4xl py-8'>
+                    <Button
+                        className='bg-white text-black mt-8 text-4xl py-8'
+                        onClick={() => handleBuyNow(third.id)} // Pass the subscription id
+                    >
                         BUY NOW
                     </Button>
                 </div>
@@ -58,7 +71,10 @@ const Subscription = () => {
                         <h2 className='text-5xl  text-[#E0E84F]'>{first.price}$</h2>
                         <p className='text-white text-xl'>/month</p>
                     </div>
-                    <Button className='bg-white text-red-600 mt-8 text-4xl py-8'>
+                    <Button
+                        className='bg-white text-black mt-8 text-4xl py-8'
+                        onClick={() => handleBuyNow(first.id)} // Pass the subscription id
+                    >
                         BUY NOW
                     </Button>
                 </div>
@@ -71,7 +87,10 @@ const Subscription = () => {
                         <h2 className='text-4xl'>{second.price}$</h2>
                         <p className='text-white text-xl'>/month</p>
                     </div>
-                    <Button className='bg-white text-black mt-8 text-4xl py-8'>
+                    <Button
+                        className='bg-white text-black mt-8 text-4xl py-8'
+                        onClick={() => handleBuyNow(third.id)}
+                    >
                         BUY NOW
                     </Button>
                 </div>

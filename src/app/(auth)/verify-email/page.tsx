@@ -11,7 +11,7 @@ function Search() {
     const email = searchParams.get('email') as string;
     const token = searchParams.get('token') as string;
 
-    return <VerifyEmailForm email={email} token={token} />;
+    return <VerifyEmailForm email={email} token={token}/>;
 }
 
 const VerifyEmailPage = () => {
@@ -22,17 +22,19 @@ const VerifyEmailPage = () => {
                 backgroundImage: `url(${BgLogin.src})`,
                 height: '90%',
             }}>
-            <div className="flex min-h-screen w-full items-center justify-center">
-                <Card className="w-full max-w-md p-8">
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-semibold">Verify Email</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <Suspense>
-                            <Search />
-                        </Suspense>
-                    </CardContent>
-                </Card>
+            <div className='w-full h-full' style={{background: 'rgba(0, 0, 0, 0.5)'}}>
+                <div className="flex min-h-screen w-full items-center justify-center">
+                    <Card className="w-full max-w-md p-8">
+                        <CardHeader>
+                            <CardTitle className="text-2xl font-semibold">Verify Email</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Suspense>
+                                <Search/>
+                            </Suspense>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </div>
     );

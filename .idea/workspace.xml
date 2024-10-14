@@ -5,26 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="fix bugs">
+      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/cart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/container.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/SubscriptionContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/admin/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgot-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/actions/login.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/login.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="viet" />
+      </map>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2nQXNtRpyzMktLuOQLTtjMn560G" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "viet",
+    "git-widget-placeholder": "phatnh13",
     "node.js.selected.package.tslint": "(autodetect)",
     "npm.build.executor": "Run",
     "npm.dev.executor": "Run",
-    "ts.external.directory.path": "E:\\FPTU\\2024_8_FALL\\PRN231\\Project\\GymFe\\gym-bro-101\\node_modules\\typescript\\lib"
+    "ts.external.directory.path": "D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib"
   }
 }]]></component>
   <component name="RunManager" selected="npm.dev">
@@ -55,6 +96,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="fix bugs">
       <option name="closed" value="true" />
@@ -83,6 +132,9 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -98,5 +150,17 @@
     <MESSAGE value="adding sort in table" />
     <MESSAGE value="fix bugs" />
     <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

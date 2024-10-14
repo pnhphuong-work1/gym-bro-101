@@ -22,7 +22,7 @@ const Header = () => {
                         <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>{fullName}</Button>
                     </Link>
                 );
-            case 'Customer':
+            case 'User':
                 return (
                     <Link href='/profile'>
                         <Button className='text-white font-bold flex bg-red-600 border py-5 px-8 mr-10'>{fullName}</Button>

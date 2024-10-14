@@ -1,12 +1,9 @@
 'use client';
 import React, {useEffect, useRef, useState} from 'react';
-import {useGlobalContext} from "@/context/GlobalContext";
-
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import HomePageImage from "@/public/asset/home-page.png"
-import { Button } from '@/components/ui/button';
-import Logo from "@/components/shared/Logo";
+import {Button} from '@/components/ui/button';
 import Welcome from "@/app/(root)/(home)/welcome";
 import Subscription from "@/app/(root)/(home)/subscription";
 import HomeNav from "@/components/shared/navbar/HomeNav";
@@ -14,7 +11,7 @@ import HomeNav from "@/components/shared/navbar/HomeNav";
 const HomePage = () => {
     const welcomeRef = useRef<HTMLDivElement>(null);
     const scrollToWelcome = () => {
-        welcomeRef.current?.scrollIntoView({ behavior: 'smooth' });
+        welcomeRef.current?.scrollIntoView({behavior: 'smooth'});
     };
     const [isSticky, setIsSticky] = useState(false);
 
@@ -38,7 +35,7 @@ const HomePage = () => {
         <div className="flex flex-col min-h-screen">
             <div className="h-lvh">
                 <Header/>
-                <HomeNav isSticky={isSticky}/>
+                <HomeNav isSticky={isSticky} status='null'/>
                 <div className="relative bg-cover bg-center h-lvh"
                      style={{backgroundImage: `url(${HomePageImage.src})`}}>
                     <div className="flex flex-col items-center justify-center h-full">
@@ -55,15 +52,15 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-                <div ref={welcomeRef} className='h-[60%] bg-white mt-20'>
-                    <Welcome/>
-                </div>
-                <div className='h-[50%]'>
-                    <Subscription/>
-                </div>
-                <Footer/>
+            <div ref={welcomeRef} className='h-[60%] bg-white mt-20'>
+                <Welcome/>
             </div>
-            );
-            };
+            <div className='h-[50%]'>
+                <Subscription/>
+            </div>
+            <Footer/>
+        </div>
+    );
+};
 
-            export default HomePage;
+export default HomePage;
