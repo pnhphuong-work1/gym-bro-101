@@ -12,19 +12,23 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {LoadingSpinner} from "@/components/shared/LoadingSpinner";
 import Link from "next/link";
-import {useRouter, useSearchParams} from "next/navigation";
+import {useRouter} from "next/navigation";
 
-const VerifyEmailForm = () => {
+interface VerifyEmailFormProps {
+    email: string;
+    token: string;
+}
+
+const VerifyEmailForm = ({email, token} : VerifyEmailFormProps) => {
     const router = useRouter();
-    const searchParams = useSearchParams();
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [message, setMessage] = useState<string | null>(null)
     const form = useForm<z.infer<typeof VerifyEmailSchema>>({
         resolver: zodResolver(VerifyEmailSchema),
         defaultValues: {
-            email: searchParams.get('email') as string,
-            token: searchParams.get('token') as string,
+            email: email,
+            token: token
         },
     })
 

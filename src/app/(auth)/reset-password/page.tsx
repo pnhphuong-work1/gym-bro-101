@@ -1,7 +1,19 @@
-import React from 'react';
+"use client";
+
+import React, {Suspense} from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import RenewPasswordForm from "@/components/forms/RenewPasswordForm";
 import BgLogin from "@/public/asset/bg_login.png";
+import {useSearchParams} from "next/navigation";
+
+function Search() {
+    const searchParams = useSearchParams();
+    const email = searchParams.get('email') as string;
+    const token = searchParams.get('token') as string;
+
+    return <RenewPasswordForm email={email} token={token} />;
+}
+
 
 const ResetPasswordPage = () => {
     return (
@@ -17,7 +29,9 @@ const ResetPasswordPage = () => {
                         <CardTitle className="text-2xl font-semibold">Reset Password</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <RenewPasswordForm/>
+                        <Suspense>
+                            <Search />
+                        </Suspense>
                     </CardContent>
                 </Card>
             </div>
