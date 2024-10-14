@@ -20,5 +20,5 @@ export const adminNavLinks = [
 export enum Role {
     Admin = "Admin",
     Manager = "Manager",
-    Customer = "Customer"
+    User = "User"
 }
