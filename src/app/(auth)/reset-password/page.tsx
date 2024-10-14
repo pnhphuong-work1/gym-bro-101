@@ -1,15 +1,21 @@
 "use client";
 
-import React from 'react';
+import React, {Suspense} from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import RenewPasswordForm from "@/components/forms/RenewPasswordForm";
 import BgLogin from "@/public/asset/bg_login.png";
 import {useSearchParams} from "next/navigation";
 
-const ResetPasswordPage = () => {
+function Search() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email') as string;
     const token = searchParams.get('token') as string;
+
+    return <RenewPasswordForm email={email} token={token} />;
+}
+
+
+const ResetPasswordPage = () => {
     return (
         <div
             className="relative bg-cover bg-center flex flex-col items-center justify-center flex-grow"
@@ -23,7 +29,9 @@ const ResetPasswordPage = () => {
                         <CardTitle className="text-2xl font-semibold">Reset Password</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <RenewPasswordForm email={email} token={token} />
+                        <Suspense>
+                            <Search />
+                        </Suspense>
                     </CardContent>
                 </Card>
             </div>
