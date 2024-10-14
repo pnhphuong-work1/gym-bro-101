@@ -1,6 +1,6 @@
 'use server'
 
-import {getAxiosClient, isErrorResponseValue} from "@/lib/utils";
+import {getAxiosClient, getAxiosClientWithToken, isErrorResponseValue} from "@/lib/utils";
 import {AuthResponseValue, BaseResponseValue, ErrorResponseValue} from "@/types";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
@@ -23,6 +23,27 @@ export async function login({ email, password } : { email: string, password: str
     } catch (error : any) {
         return error.response.data as ErrorResponseValue;
     }
+}
+
+export async function logout() {
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
+
+    try {
+        const response = await axios
+            .post<BaseResponseValue<null>>('v2024-09-29/auth/logout', {
+                accessToken: credentials.accessToken,
+            });
+
+        cookies().delete('tokens');
+    } catch (error: any) {
+        throw Error(error);
+    }
+
+    redirect('/');
 }
 
 export async function silentLogin(accessToken: string, refreshToken: string) {
