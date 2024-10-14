@@ -2,8 +2,13 @@ import React from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import VerifyEmailForm from "@/components/forms/VerifyEmailForm";
 import BgLogin from "@/public/asset/bg_login.png";
+import {useSearchParams} from "next/navigation";
 
 const VerifyEmailPage = () => {
+
+    const searchParams = useSearchParams();
+    const email = searchParams.get('email') as string;
+    const token = searchParams.get('token') as string;
     return (
         <div
             className="relative bg-cover bg-center flex flex-col items-center justify-center flex-grow"
@@ -17,7 +22,7 @@ const VerifyEmailPage = () => {
                         <CardTitle className="text-2xl font-semibold">Verify Email</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <VerifyEmailForm/>
+                        <VerifyEmailForm email={email} token={token} />
                     </CardContent>
                 </Card>
             </div>

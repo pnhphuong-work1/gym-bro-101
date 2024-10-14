@@ -1,7 +1,11 @@
 import React from 'react';
 import Logo from "@/components/shared/Logo";
 
-const HomeNav = ({ isSticky }) => {
+interface HomeNavProps {
+    isSticky: boolean;
+}
+
+const HomeNav = ({ isSticky } : HomeNavProps) => {
     return (
         <div
             className={`left-0 right-0 z-10 p-4 bg-opacity-100 bg-black transition-all duration-300 ease-in-out 
