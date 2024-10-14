@@ -27,8 +27,6 @@
     &quot;ts.external.directory.path&quot;: &quot;E:\\FPTU\\2024_8_FALL\\PRN231\\Project\\GymFe\\gym-bro-101\\node_modules\\typescript\\lib&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.build">
-}]></component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
