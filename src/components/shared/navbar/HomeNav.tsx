@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from "@/components/shared/Logo";
+import Link from "next/link";
 
 const HomeNav = ({ isSticky }) => {
     return (
@@ -13,7 +14,7 @@ const HomeNav = ({ isSticky }) => {
                 </div>
                 <nav className='w-[60%]'>
                     <ul className="flex space-x-6 text-white justify-between text-3xl">
-                        <li><a href="/" className="hover:text-gray-300">HOME</a></li>
+                        <li><Link href="/" className="hover:text-gray-300">HOME</Link></li>
                         <li><a href="#services" className="hover:text-gray-300">MEMBERSHIPS</a></li>
                         <li><a href="#about" className="hover:text-gray-300">SCHEDULE</a></li>
                     </ul>
