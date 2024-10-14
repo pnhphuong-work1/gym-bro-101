@@ -1,0 +1,83 @@
+import React, {useEffect, useState} from 'react';
+import {Button} from "@/components/ui/button";
+import {SubscriptionResponseValue} from "@/types";
+import {isErrorResponseValue} from "@/lib/utils";
+import {getAllSubscriptions} from "@/lib/actions/subscription.action";
+
+const Subscription = () => {
+
+    const [subscriptions, setSubscriptions] = useState<SubscriptionResponseValue[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        setLoading(true);
+        getAllSubscriptions()
+            .then((response) => {
+                if (!isErrorResponseValue(response)) {
+                    setSubscriptions(response.value.items); // Store the subscription items
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false); // Set loading to false after fetching data
+            });
+    }, []);
+    if (loading) return <div>Loading...</div>;
+    if (!subscriptions || subscriptions.length !== 3) return <div>Error: Expected 3 subscriptions.</div>;
+    const [first, second, third] = subscriptions;
+    return (
+        <div className='bg-red-500 w-full h-full flex flex-col items-center justify-center pb-10'>
+            <h1 className='text-7xl mt-2 text-white' style={{fontFamily: 'Monda, sans-serif'}}>Choose your plan</h1>
+            <div className="w-[10%] h-0.5 bg-white mt-4"></div>
+            <h2 className='mt-5 text-xl text-white'>
+                You can choose any membership plan that you like, but we recommend trying our workouts for yourself
+                before buying.
+            </h2>
+            <div className="flex justify-center items-center w-[80%] mt-5 gap-5">
+                {/* First square */}
+                <div className="w-[30%] h-full bg-red-500 flex flex-col items-center justify-center pb-5 mt-3">
+                    <p className="text-center text-4xl font-bold mt-2">{third.name}</p>
+                    <div className="w-[80%] h-0.5 bg-white mt-4"></div>
+                    <div className='flex mt-5'>
+                        <h2 className='text-4xl'>{third.price}$</h2>
+                        <p className='text-white text-xl'>/month</p>
+                    </div>
+                    <Button className='bg-white text-black mt-8 text-4xl py-8'>
+                        BUY NOW
+                    </Button>
+                </div>
+
+                {/* Second square */}
+                <div
+                    className="w-[40%] h-full bg-red-600 border-amber-100 border flex flex-col items-center justify-center pb-5 mt-3">
+                    <p className="text-center text-4xl font-bold text-white mt-2">{first.name}</p>
+                    <div className="w-[80%] h-0.5 bg-white mt-4"></div>
+                    <div className='flex mt-5'>
+                        <h2 className='text-5xl  text-[#E0E84F]'>{first.price}$</h2>
+                        <p className='text-white text-xl'>/month</p>
+                    </div>
+                    <Button className='bg-white text-red-600 mt-8 text-4xl py-8'>
+                        BUY NOW
+                    </Button>
+                </div>
+
+                {/* Third square */}
+                <div className="w-[30%] h-full bg-red-500 flex flex-col items-center justify-center pb-5 mt-3">
+                    <p className="text-center text-4xl font-bold mt-2">{second.name}</p>
+                    <div className="w-[80%] h-0.5 bg-white mt-4"></div>
+                    <div className='flex mt-5'>
+                        <h2 className='text-4xl'>{second.price}$</h2>
+                        <p className='text-white text-xl'>/month</p>
+                    </div>
+                    <Button className='bg-white text-black mt-8 text-4xl py-8'>
+                        BUY NOW
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Subscription;
