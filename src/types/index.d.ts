@@ -51,6 +51,7 @@ export interface UserResponseValue {
     userName: string;
     fullName: string;
     phoneNumber: string;
+    dateOfBirth: Date;
 }
 
 export interface CustomerResponseValue {

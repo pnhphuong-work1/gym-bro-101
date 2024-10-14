@@ -14,6 +14,10 @@ export const adminNavLinks = [
     {
         name: "Customer",
         href: "/admin/dashboard/customer"
+    },
+    {
+        name: "Subscription",
+        href: "/admin/dashboard/subscription"
     }
 ];
 

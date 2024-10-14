@@ -43,6 +43,36 @@ export async function createManager({ email, password, dob, fullName, confirmPas
     }
 }
 
+export async function updateUser({ id, email, fullName, dob, phoneNumber } : { id: string, email: string, fullName: string, dob: Date, phoneNumber: string }) {
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
+    // YYYY-MM-DD
+    const dateOfBirth = dob.toISOString().split('T')[0];
+    try {
+        const response = await axios
+            .put<BaseResponseValue<UserResponseValue>>(`v2024-09-19/users/${id}`, { email, fullName, dateOfBirth, phoneNumber });
+
+        return response.data;
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+export async function getUserById(id: string) {
+    const axios = getAxiosClient();
+
+    try {
+        const response = await axios
+            .get<BaseResponseValue<UserResponseValue>>(`v2024-09-19/users/${id}`);
+        return response.data;
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
 export async function forgotPassword({ email } : { email: string }) {
     const axios = getAxiosClient();
     
