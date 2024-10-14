@@ -1,7 +1,18 @@
-import React from 'react';
+"use client";
+
+import React, {Suspense} from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import VerifyEmailForm from "@/components/forms/VerifyEmailForm";
 import BgLogin from "@/public/asset/bg_login.png";
+import {useSearchParams} from "next/navigation";
+
+function Search() {
+    const searchParams = useSearchParams();
+    const email = searchParams.get('email') as string;
+    const token = searchParams.get('token') as string;
+
+    return <VerifyEmailForm email={email} token={token} />;
+}
 
 const VerifyEmailPage = () => {
     return (
@@ -17,7 +28,9 @@ const VerifyEmailPage = () => {
                         <CardTitle className="text-2xl font-semibold">Verify Email</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <VerifyEmailForm/>
+                        <Suspense>
+                            <Search />
+                        </Suspense>
                     </CardContent>
                 </Card>
             </div>

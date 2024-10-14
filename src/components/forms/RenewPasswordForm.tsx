@@ -10,21 +10,25 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {LoadingSpinner} from "@/components/shared/LoadingSpinner";
 import Link from "next/link";
-import {useRouter, useSearchParams} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {resetPassword} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 
-const RenewPasswordForm = () => {
+interface RenewPasswordFormProps {
+    email: string;
+    token: string;
+}
+
+const RenewPasswordForm = ({email, token} : RenewPasswordFormProps) => {
     const router = useRouter();
-    const searchParams = useSearchParams();
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [message, setMessage] = useState<string | null>(null)
     const form = useForm<z.infer<typeof RenewPasswordSchema>>({
         resolver: zodResolver(RenewPasswordSchema),
         defaultValues: {
-            email: searchParams.get('email') as string,
-            token: searchParams.get('token') as string,
+            email: email,
+            token: token,
             newPassword: "",
             confirmPassword: "",
         },
