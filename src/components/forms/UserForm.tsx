@@ -218,13 +218,12 @@ const UserForm = ({editable, id, isCustomer}: UserFormProps) => {
                 </FormMessage>
 
                 {
-                    isCustomer ? (
-                        subcriptions.map((sub, index) => {
-                            console.log(sub)
-                            return (
-                                <Badge key={index} variant="outline">{sub.name}</Badge>
-                            )
-                        })
+                    isCustomer && !editable ? (
+                        subcriptions.map((sub, index) => (
+                            <Badge key={index} className="bg-blue-400 text-white p-2 mr-2">
+                                {sub.name}
+                            </Badge>
+                        ))
                     ) : null
                 }
 
