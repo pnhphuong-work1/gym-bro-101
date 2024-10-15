@@ -61,12 +61,24 @@ export async function updateUser({ id, email, fullName, dob, phoneNumber } : { i
     }
 }
 
-export async function getUserById(id: string) {
+export async function getCustomerById(id: string) {
     const axios = getAxiosClient();
 
     try {
         const response = await axios
-            .get<BaseResponseValue<UserResponseValue>>(`v2024-09-19/users/${id}`);
+            .get<BaseResponseValue<CustomerResponseValue>>(`v2024-09-19/users/${id}`);
+        return response.data;
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+export async function getManagerById(id: string) {
+    const axios = getAxiosClient();
+
+    try {
+        const response = await axios
+            .get<BaseResponseValue<UserResponseValue>>(`v2024-09-19/managers/${id}`);
         return response.data;
     } catch (error : any) {
         return error.response.data as ErrorResponseValue;

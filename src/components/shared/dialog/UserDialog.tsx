@@ -6,9 +6,10 @@ import UserForm from "@/components/forms/UserForm";
 interface UserDialogProps {
     editable: boolean;
     id: string;
+    isCustomer: boolean;
 }
 
-const UserDialog = ({editable, id} : UserDialogProps) => {
+const UserDialog = ({editable, id, isCustomer} : UserDialogProps) => {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -23,7 +24,7 @@ const UserDialog = ({editable, id} : UserDialogProps) => {
                 <DialogHeader>
                     <DialogTitle>{editable ? "Edit User" : "User"}</DialogTitle>
                 </DialogHeader>
-                <UserForm editable={editable} id={id} />
+                <UserForm editable={editable} id={id} isCustomer={isCustomer} />
             </DialogContent>
         </Dialog>
     );
