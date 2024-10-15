@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; viet-2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,10 +27,10 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2nQXNtRpyzMktLuOQLTtjMn560G" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,15 +39,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "phatnh13",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;phatnh13&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -121,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728919157219</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&lt;merge&gt; viet-2">
+      <option name="closed" value="true" />
+      <created>1728960918475</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728960918475</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +146,9 @@
     <MESSAGE value="adding sort in table" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;add&gt; cart&#10;&lt;add&gt; subscription detail" />
+    <MESSAGE value="&lt;merge&gt; phatnh13" />
+    <MESSAGE value="&lt;merge&gt; viet-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;merge&gt; viet-2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -150,7 +156,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx</url>
           <line>8</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
