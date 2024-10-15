@@ -37,3 +37,13 @@ export const RenewPasswordSchema = z.object({
     path: ["confirmPassword"], // Show error under confirmPassword field
     message: "Passwords do not match",
 })
+
+export const UpdateUserSchema = z.object({
+    id: z.string().min(1, "Please enter a valid id"),
+    email: z.string().email("Please enter a valid email"),
+    fullName: z.string().min(1, "Please enter your full name"),
+    phoneNumber: z.string().min(1, "Please enter a phone number"),
+    dob: z.date({
+        message: "Please enter a valid date of birth",
+    }),
+})

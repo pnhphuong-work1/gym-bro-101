@@ -1,29 +1,27 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { UserResponseValue } from "@/types";
-import { getAllManagers } from "@/lib/actions/user.action";
-import { isErrorResponseValue } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Skeleton } from "@/components/ui/skeleton";
-import CreateManagerDialog from "@/components/shared/dialog/CreateManagerDialog";
-import PaginationBase from "@/components/shared/PaginationBase";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {Button} from "@/components/ui/button";
 import {CaretSortIcon} from "@radix-ui/react-icons";
-import UserDialog from "@/components/shared/dialog/UserDialog";
+import {SubscriptionResponseValue} from "@/types";
+import {getAllSubscriptions} from "@/lib/actions/subscription.action";
+import {isErrorResponseValue} from "@/lib/utils";
+import {Skeleton} from "@/components/ui/skeleton";
+import Link from "next/link";
+import PaginationBase from "@/components/shared/PaginationBase";
 
-const UserTableHeader = [
-    { name: 'Id', sortable: false, sortKey: 'id' },
-    { name: 'Full Name', sortable: true, sortKey: 'fullName' },
-    { name: 'Email', sortable: true, sortKey: 'email' },
-    { name: 'Phone Number', sortable: true, sortKey: 'phoneNumber' },
-    { name: 'Action', sortable: false, sortKey: 'action' },
-];
+const SubscriptionTableHeader = [
+    {name: "Id", sortable: false, sortKey: 'id'},
+    {name: "Subscription Name", sortable: false, sortKey: 'name'},
+    {name: "Time Limit (Hours)", sortable: false, sortKey: 'totalWorkoutTime'},
+    {name: "Price (VNĐ)", sortable: false, sortKey: 'price'},
+    {name: "Action", sortable: false, sortKey: 'action'},
+]
 
-const UserTable = () => {
-    const [users, setUsers] = useState<UserResponseValue[]>([]);
+const SubscriptionTable = () => {
+    const [subscriptions, setSubscriptions] = useState<SubscriptionResponseValue[]>([])
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
     const [totalCounts, setTotalCounts] = useState<number>(1);
@@ -31,8 +29,8 @@ const UserTable = () => {
     const [hasNextPage, setHasNextPage] = useState<boolean>(false);
     const [hasPrevPage, setHasPrevPage] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
-    const [sortBy, setSortBy] = useState<string>('email');
-    const [sortOrder, setSortOrder] = useState<string>('asc');
+    const [sortBy, setSortBy] = useState<string>('price');
+    const [sortOrder, setSortOrder] = useState<string>('desc');
 
     const handleChangeSort = (sortKey: string) => {
         if (sortKey === sortBy) {
@@ -45,42 +43,39 @@ const UserTable = () => {
 
     useEffect(() => {
         setLoading(true);
-        getAllManagers(search, 'fullName', sortOrder, sortBy, page, limit)
+        getAllSubscriptions(search, 'name', sortOrder, sortBy, page, limit)
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
-                    setUsers(response.value.items);
+                    setSubscriptions(response.value.items);
                     setPage(response.value.pageIndex);
                     setTotalCounts(response.value.totalCount);
                     setLimit(response.value.pageSize);
                     setHasNextPage(response.value.hasNextPage);
                     setHasPrevPage(response.value.hasPreviousPage);
                 }
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 console.log(error);
-            })
-            .finally(() => {
-                setLoading(false); // Set loading to false after fetching data
+            }).finally(() => {
+                setLoading(false);
             });
-    }, [page, search, sortBy, sortOrder]);
+    }, []);
 
     return (
         <Card>
-            <CardHeader className="flex justify-between flex-row items-center">
-                <CardTitle>Manager Dashboard</CardTitle>
-                <CreateManagerDialog />
+            <CardHeader>
+                <CardTitle>Subscription Table</CardTitle>
             </CardHeader>
             <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            {UserTableHeader.map((header, index) => (
+                            {SubscriptionTableHeader.map((header, index) => (
                                 <TableHead key={index}>
                                     {header.sortable ? (
                                         <Button
                                             variant="ghost"
                                             className={`flex items-center justify-center gap-1 ${sortBy === header.sortKey ? 'text-blue-500' : 'text-gray-500'}`}
-                                            onClick={() => handleChangeSort(header.sortKey)}
+                                            onClick={() => {}}
                                         >
                                             {header.name}
                                             <CaretSortIcon className="ml-2 w-4 h-4" />
@@ -97,18 +92,21 @@ const UserTable = () => {
                                     <Skeleton className="w-full h-[30px] rounded-full" />
                                 </TableCell>
                             </TableRow>
-                        ) : users && users.length > 0 ? (
-                            users.map((user, index) => (
+                        ) : subscriptions && subscriptions.length > 0 ? (
+                            subscriptions.map((sub, index) => (
                                 <TableRow key={index} className="border-b">
                                     <TableCell>{index + 1}</TableCell>
-                                    <TableCell>{user.fullName}</TableCell>
-                                    <TableCell>{user.email}</TableCell>
-                                    <TableCell>{user.phoneNumber}</TableCell>
+                                    <TableCell>{sub.name}</TableCell>
+                                    <TableCell>{sub.totalWorkoutTime}</TableCell>
+                                    <TableCell>{sub.price}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <UserDialog editable={false} id={user.id} />
-                                        <UserDialog editable={true} id={user.id} />
+                                        <Button className="bg-blue-200 text-white px-2 py-1 rounded">
+                                            <Link href={`/admin/dashboard/manager/${sub.id}`}>
+                                                Edit
+                                            </Link>
+                                        </Button>
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${user.id}`}>
+                                            <Link href={`/admin/dashboard/manager/${sub.id}`}>
                                                 Delete
                                             </Link>
                                         </Button>
@@ -118,7 +116,7 @@ const UserTable = () => {
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={5} className="text-center">
-                                    No managers found
+                                    No Subscription found
                                 </TableCell>
                             </TableRow>
                         )}
@@ -139,4 +137,4 @@ const UserTable = () => {
     );
 };
 
-export default UserTable;
+export default SubscriptionTable;
