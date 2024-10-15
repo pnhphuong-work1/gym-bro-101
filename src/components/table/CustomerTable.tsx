@@ -12,6 +12,7 @@ import Link from "next/link";
 import PaginationBase from "@/components/shared/PaginationBase";
 import CreateCustomerDialog from "@/components/shared/dialog/CreateCustomerDialog";
 import {CaretSortIcon} from "@radix-ui/react-icons";
+import UserDialog from "@/components/shared/dialog/UserDialog";
 
 const CustomerTableHeader = [
     {name: 'Id', sortable: false, sortKey: 'id'},
@@ -109,11 +110,8 @@ const CustomerTable = () => {
                                     <TableCell>{user.totalSpentTime}</TableCell>
                                     <TableCell>{user.totalPayment}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <Button className="bg-blue-200 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/customer/${user.id}`}>
-                                                Edit
-                                            </Link>
-                                        </Button>
+                                        <UserDialog editable={false} id={user.id} />
+                                        <UserDialog editable={true} id={user.id} />
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
                                             <Link href={`/admin/dashboard/customer/${user.id}`}>
                                                 Delete
