@@ -26,7 +26,7 @@ const HomeNav = ({isSticky, status}: HomeNavProps) => {
                         <ul className="flex space-x-6 text-white justify-between text-3xl">
                             <li>
                                 <Link href="/"
-                                      className={`hover:text-gray-300 ${status === 'memberships' ? 'text-[#E0E84F]' : ''}`}
+                                      className={`hover:text-gray-300 ${status === 'home' ? 'text-[#E0E84F]' : ''}`}
                                 >
                                     HOME
                                 </Link>

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; viet-2" />
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; viet-2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/navbar/HomeNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/asset/fb_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/asset/fb_logo.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +31,7 @@
         <entry key="$PROJECT_DIR$" value="viet" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -39,15 +48,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;phatnh13&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "phatnh13",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -124,6 +138,14 @@
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
       <updated>1728960918475</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; viet-2" />
+      <created>1728979407164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728979407164</updated>
+      <workItem from="1728979407172" duration="4764000" />
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />

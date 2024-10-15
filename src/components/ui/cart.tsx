@@ -21,19 +21,19 @@ const Cart: React.FC<CartProps> = ({ subscriptions }) => {
             <Table>
                 <TableHeader>
                     <TableRow className='text-2xl'>
-                        <TableHead className='flex justify-center'>Name</TableHead>
-                        <TableHead className='flex justify-center'>Workout Time</TableHead>
+                        <TableHead className=''>Name</TableHead>
+                        <TableHead className=''>Workout Time</TableHead>
                         <TableHead>Group</TableHead>
-                        <TableHead className='flex justify-center'>Price</TableHead>
+                        <TableHead className=''>Price</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {subscriptions.map((subscription) => (
                         <TableRow className='text-xl' key={subscription.id}>
-                            <TableCell className='flex justify-center'>{subscription.name}</TableCell>
-                            <TableCell className='flex justify-center'>{subscription.totalWorkoutTime}</TableCell>
+                            <TableCell className='text-[#2519A4] text-2xl'>{subscription.name}</TableCell>
+                            <TableCell className=''>{subscription.totalWorkoutTime}</TableCell>
                             <TableCell>{subscription.group}</TableCell>
-                            <TableCell className='flex justify-center'>{subscription.price}$</TableCell>
+                            <TableCell className=''>{subscription.price}$</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

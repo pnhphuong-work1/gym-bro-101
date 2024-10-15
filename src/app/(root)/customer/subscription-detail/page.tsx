@@ -34,7 +34,7 @@ const Page = () => {
             .finally(() => {
                 setLoading(false);
             });
-    }, [subscriptionId]);
+    }, []);
 
     const handleBuy = (id: string) => {
         console.log(`Buying subscription with ID: ${id}`);
