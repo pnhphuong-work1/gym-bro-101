@@ -110,8 +110,8 @@ const CustomerTable = () => {
                                     <TableCell>{user.totalSpentTime}</TableCell>
                                     <TableCell>{user.totalPayment}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <UserDialog editable={false} id={user.id} />
-                                        <UserDialog editable={true} id={user.id} />
+                                        <UserDialog editable={false} id={user.id} isCustomer={true} />
+                                        <UserDialog editable={true} id={user.id} isCustomer={true} />
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
                                             <Link href={`/admin/dashboard/customer/${user.id}`}>
                                                 Delete

@@ -60,8 +60,10 @@ export interface CustomerResponseValue {
     userName: string;
     fullName: string;
     phoneNumber: string;
+    dateOfBirth: Date;
     totalSpentTime: number;
     totalPayment: number;
+    subscriptions: SubscriptionResponseValue[];
 }
 export interface SubscriptionResponseValue {
     id: string;

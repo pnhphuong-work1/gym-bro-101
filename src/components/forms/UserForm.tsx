@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {UpdateUserSchema} from "@/lib/validation";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {getUserById, updateUser} from "@/lib/actions/user.action";
+import {getCustomerById, getManagerById, updateUser} from "@/lib/actions/user.action";
 import {cn, isErrorResponseValue} from "@/lib/utils";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
@@ -15,13 +15,17 @@ import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {format} from "date-fns";
 import {CalendarIcon} from "lucide-react";
 import {Calendar} from "@/components/ui/calendar";
+import {Badge} from "@/components/ui/badge";
+import {SubscriptionResponseValue} from "@/types";
 
 interface UserFormProps {
     editable: boolean;
     id: string;
+    isCustomer: boolean;
 }
 
-const UserForm = ({editable, id}: UserFormProps) => {
+const UserForm = ({editable, id, isCustomer}: UserFormProps) => {
+    const [subcriptions, setSubscriptions] = useState<SubscriptionResponseValue[]>([])
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [validationError, setValidationError] = useState<string[] | null>(null)
@@ -38,14 +42,26 @@ const UserForm = ({editable, id}: UserFormProps) => {
     })
 
     useEffect(() => {
-        getUserById(id).then((res) => {
-            if (!isErrorResponseValue(res)) {
-                form.reset(res.value);
-                form.setValue("dob", new Date(res.value.dateOfBirth));
-            } else {
-                setError(res.detail);
-            }
-        });
+        if (isCustomer) {
+            getCustomerById(id).then((res) => {
+                if (!isErrorResponseValue(res)) {
+                   setSubscriptions(res.value.subscriptions);
+                    form.reset(res.value);
+                    form.setValue("dob", new Date(res.value.dateOfBirth));
+                } else {
+                    setError(res.detail);
+                }
+            });
+        } else {
+            getManagerById(id).then((res) => {
+                if (!isErrorResponseValue(res)) {
+                    form.reset(res.value);
+                    form.setValue("dob", new Date(res.value.dateOfBirth));
+                } else {
+                    setError(res.detail);
+                }
+            });
+        }
     }, []);
 
 
@@ -200,6 +216,17 @@ const UserForm = ({editable, id}: UserFormProps) => {
                 <FormMessage>
                     {error}
                 </FormMessage>
+
+                {
+                    isCustomer ? (
+                        subcriptions.map((sub, index) => {
+                            console.log(sub)
+                            return (
+                                <Badge key={index} variant="outline">{sub.name}</Badge>
+                            )
+                        })
+                    ) : null
+                }
 
                 {
                     editable ? (
