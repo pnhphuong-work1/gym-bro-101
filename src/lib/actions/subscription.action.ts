@@ -23,3 +23,12 @@ export async function getAllSubscriptions(search?: string, searchBy?: string, so
         return error.response.data as ErrorResponseValue;
     }
 }
+export async function getSubscriptionById(id: string) {
+    const axios = getAxiosClient();
+    try {
+        const response = await axios.get<SubscriptionResponseValue>(`v2024-09-19/subscriptions/${id}`);
+        return response.data;
+    } catch (error: any) {
+        return error.response ? error.response.data : { error: "Unknown error" }; // Ensure a valid response is returned
+    }
+}
