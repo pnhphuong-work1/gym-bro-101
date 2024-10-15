@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="adding logout">
-      <change afterPath="$PROJECT_DIR$/src/app/(root)/admin/dashboard/subscription/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/SubscriptionDashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forms/UserForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/shared/dialog/UserDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/SubscriptionTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/actions/user.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/user.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.d.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="fix bug 9:45" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +20,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -136,7 +125,15 @@
       <updated>1728903400616</updated>
       <workItem from="1728903401787" duration="5915000" />
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix bug 9:45">
+      <option name="closed" value="true" />
+      <created>1728960351737</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728960351737</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +154,7 @@
     <MESSAGE value="adding sort in table" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="adding logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding logout" />
+    <MESSAGE value="fix bug 9:45" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug 9:45" />
   </component>
 </project>
