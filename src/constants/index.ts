@@ -26,3 +26,18 @@ export enum Role {
     Manager = "Manager",
     User = "User"
 }
+
+export const managerNavLinks = [
+    {
+        name: "Home",
+        href: "/manager/dashboard/home"
+    },
+    {
+        name: "Check Log",
+        href: "/manager/dashboard/check-log"
+    },
+    {
+        name: "Customer",
+        href: "/manager/dashboard/customer"
+    }
+];

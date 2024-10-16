@@ -73,3 +73,11 @@ export interface SubscriptionResponseValue {
     dayGroupId: string;
     group: string;
 }
+
+export interface CheckLogResponseValue {
+    id: string
+    checkInId: string
+    userSubscriptionId: string
+    checkStatus: string
+    workoutTime: string
+}
