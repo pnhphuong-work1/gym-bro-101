@@ -9,7 +9,7 @@ export const adminNavLinks = [
     },
     {
         name: "Staff",
-        href: "/admin/dashboard/staff"
+        href: "/admin/dashboard/manager"
     },
     {
         name: "Customer",
