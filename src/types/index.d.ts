@@ -97,3 +97,14 @@ export interface UserSubscriptionByUserResponseValue {
         message: string;
     };
 }
+
+export interface CheckLogResponseValue {
+    id: string
+    checkInId: string
+    userSubscriptionId: string
+    checkStatus: string
+    workoutTime: string
+    fullName: string
+    createdAt: string
+    userId: string
+}

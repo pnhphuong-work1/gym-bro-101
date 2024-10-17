@@ -8,6 +8,7 @@ import {useRouter} from "next/navigation";
 
 import BgLogin from "@/public/asset/bg_login.png";
 import Link from "next/link";
+import {Role} from "@/constants";
 
 const LoginPage = () => {
     const router = useRouter();
@@ -17,7 +18,9 @@ const LoginPage = () => {
         if (role === 'Admin' && !loading) {
             router.push('/admin/dashboard/staff');  // Only perform this redirection on the client side
         } else if(role === 'User' && !loading) {
-            router.push('/');
+            router.push('/customer/memberships');
+        } else if (role === Role.Manager && !loading) {
+            router.push('/manager/dashboard/check-log');
         }
     }, [role, router, loading]);  // Trigger this effect when `role` or `router` changes
 
