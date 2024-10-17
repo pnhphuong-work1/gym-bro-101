@@ -29,7 +29,7 @@ export async function logout() {
     const credentials = await getUserCredentials();
     if (!credentials) {
         // Already logged out, just redirect to login
-        redirect('/login');
+        return true;
     }
     const axios = getAxiosClientWithToken(credentials.accessToken);
 
@@ -38,20 +38,24 @@ export async function logout() {
             accessToken: credentials.accessToken,
         });
 
-        // Delete the tokens
-        cookies().delete('tokens');
-        localStorage.removeItem('authToken');
+        // Delete the token
+        cookies().set('tokens', '', {
+            path: '/', // Ensure the path matches the cookie creation path
+            maxAge: 0, // This will force the cookie to be deleted
+        });
+        //localStorage.removeItem('authToken');
 
         // You may also want to clear any client-side data here
         // For example, if you use local storage, you can clear it:
         // localStorage.clear();
 
     } catch (error: any) {
-        throw new Error(error);
+       // throw error
+        console.error(error);
+        return false;
     }
 
-    // Redirect to the home page and force refresh to ensure tokens are cleared
-    redirect('/login');
+    return true;
 }
 
 export async function silentLogin(accessToken: string, refreshToken: string) {
