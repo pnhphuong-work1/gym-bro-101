@@ -80,4 +80,7 @@ export interface CheckLogResponseValue {
     userSubscriptionId: string
     checkStatus: string
     workoutTime: string
+    fullName: string
+    createdAt: string
+    userId: string
 }
