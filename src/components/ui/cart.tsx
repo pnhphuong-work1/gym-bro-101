@@ -12,7 +12,6 @@ interface Subscription {
 
 interface CartProps {
     subscriptions: Subscription[]; // Array of subscriptions to display in the cart
-    onBuy: (id: string) => void; // Callback function to handle the buy action
 }
 
 const Cart: React.FC<CartProps> = ({ subscriptions }) => {
