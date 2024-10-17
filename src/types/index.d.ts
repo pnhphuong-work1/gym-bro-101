@@ -41,6 +41,7 @@ export interface AuthResponseValue {
     refreshToken: string;
     role: string;
     fullName: string;
+    userId: string;
     accessTokenExpiration: Date;
     refreshTokenExpiration: Date;
 }
@@ -72,4 +73,27 @@ export interface SubscriptionResponseValue {
     price: number;
     dayGroupId: string;
     group: string;
+}
+export interface UserSubscriptionResponseValue {
+    id: string,
+    userId: string,
+    subscriptionId: string,
+    paymentId: string,
+    paymentPrice: number,
+    workoutSteak: number,
+    longestWorkoutSteak: number,
+    lastWorkoutDate: string,
+    subscriptionEndDate: string,
+    group: string,
+    totalWorkoutTime: string,
+    name: string
+}
+export interface UserSubscriptionByUserResponseValue {
+    value: UserSubscriptionResponseValue[];
+    isSuccess: boolean;
+    isFailure: boolean;
+    error: {
+        code: string;
+        message: string;
+    };
 }

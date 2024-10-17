@@ -4,6 +4,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {getUserCredentials} from "@/lib/actions/login.action";
 
 interface GlobalContextProps {
+    userId: string;
     fullName: string;
     role: string;
     setFullName: (fullName: string) => void;
@@ -14,12 +15,14 @@ interface GlobalContextProps {
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
 export function GlobalProvider({children} : {children: React.ReactNode}) {
+    const [userId, setUserId] = useState('');
     const [fullName, setFullName] = useState('');
     const [role, setRole] = useState('');
     const [loading, setLoading] = useState(true);
     const handleCredentials = async () => {
         const credentials = await getUserCredentials();
         if (credentials) {
+            setUserId(credentials.userId);
             setFullName(credentials.fullName);
             setRole(credentials.role);
         }
@@ -32,7 +35,7 @@ export function GlobalProvider({children} : {children: React.ReactNode}) {
     }, []);
 
     return (
-        <GlobalContext.Provider value={{fullName, role, setFullName, setRole, loading}}>
+        <GlobalContext.Provider value={{userId, fullName, role, setFullName, setRole, loading}}>
             {children}
         </GlobalContext.Provider>
     );

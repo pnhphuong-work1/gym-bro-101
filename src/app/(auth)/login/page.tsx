@@ -17,7 +17,7 @@ const LoginPage = () => {
         if (role === 'Admin' && !loading) {
             router.push('/admin/dashboard/staff');  // Only perform this redirection on the client side
         } else if(role === 'User' && !loading) {
-            router.push('/customer/memberships');
+            router.push('/');
         }
     }, [role, router, loading]);  // Trigger this effect when `role` or `router` changes
 

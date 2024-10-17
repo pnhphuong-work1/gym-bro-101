@@ -4,8 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="fix bug 9:45">
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="w">
+      <change afterPath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/payment.action.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/userSubscription.action.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/GlobalContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/login.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/login.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +63,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "phatnh13",
-    "last_opened_file_path": "D:/SWD391/PickleBall-FE-V3",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/EXE-support/spotlight_client",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -138,6 +155,8 @@
       <workItem from="1728903401787" duration="5915000" />
       <workItem from="1728995007391" duration="185000" />
       <workItem from="1729055744193" duration="122000" />
+      <workItem from="1729151237392" duration="4983000" />
+      <workItem from="1729174377198" duration="123000" />
     </task>
     <task id="LOCAL-00005" summary="fix bug 9:45">
       <option name="closed" value="true" />
@@ -169,6 +188,7 @@
     <MESSAGE value="fix bugs" />
     <MESSAGE value="adding logout" />
     <MESSAGE value="fix bug 9:45" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug 9:45" />
+    <MESSAGE value="w" />
+    <option name="LAST_COMMIT_MESSAGE" value="w" />
   </component>
 </project>
