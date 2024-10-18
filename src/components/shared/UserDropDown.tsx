@@ -14,9 +14,17 @@ import {
 import {Button} from "@/components/ui/button";
 import {useGlobalContext} from "@/context/GlobalContext";
 import Link from "next/link";
+import {logout} from "@/lib/actions/login.action";
 
 const UserDropDown = () => {
-    const {fullName} = useGlobalContext();
+    const {fullName,setFullName, setRole} = useGlobalContext();
+    const handleLogout = async () => {
+        const res = await logout();
+        if (res) {
+            setFullName('');
+            setRole('');
+        }
+    }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -45,7 +53,9 @@ const UserDropDown = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
+                    Logout
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );
