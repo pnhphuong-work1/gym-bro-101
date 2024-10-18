@@ -33,11 +33,11 @@ export const managerNavLinks = [
         href: "/manager/dashboard/home"
     },
     {
-        name: "Check Log",
+        name: "Logs",
         href: "/manager/dashboard/check-log"
     },
     {
-        name: "Customer",
+        name: "Customers",
         href: "/manager/dashboard/customer"
     }
 ];

@@ -107,4 +107,6 @@ export interface CheckLogResponseValue {
     fullName: string
     createdAt: string
     userId: string
+    subscriptionName: string
+    checkInTime: string
 }
