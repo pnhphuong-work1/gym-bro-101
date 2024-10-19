@@ -110,3 +110,7 @@ export interface CheckLogResponseValue {
     subscriptionName: string
     checkInTime: string
 }
+export interface WorkoutDaysResponseValue {
+    title?: string;
+    start: string;
+}
