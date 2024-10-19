@@ -40,7 +40,11 @@ const HomeNav = ({isSticky, status}: HomeNavProps) => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="/" className="hover:text-gray-300">SCHEDULE</a>
+                                <Link href={"/customer/schedule"}
+                                        className={`hover:text-gray-300 ${status === 'schedule' ? 'text-[#E0E84F]' : ''}`}
+                                >
+                                    SCHEDULE
+                                </Link>
                             </li>
                         </ul>
                     </nav>
