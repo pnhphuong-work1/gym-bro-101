@@ -9,7 +9,7 @@ export const adminNavLinks = [
     },
     {
         name: "Staff",
-        href: "/admin/dashboard/staff"
+        href: "/admin/dashboard/manager"
     },
     {
         name: "Customer",
@@ -26,3 +26,18 @@ export enum Role {
     Manager = "Manager",
     User = "User"
 }
+
+export const managerNavLinks = [
+    {
+        name: "Home",
+        href: "/manager/dashboard/home"
+    },
+    {
+        name: "Logs",
+        href: "/manager/dashboard/check-log"
+    },
+    {
+        name: "Customers",
+        href: "/manager/dashboard/customer"
+    }
+];

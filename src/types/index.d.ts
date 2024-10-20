@@ -115,3 +115,20 @@ export interface PaymentResponseReturnValue {
     amount: number,
     userId: string,
 }
+
+export interface CheckLogResponseValue {
+    id: string
+    checkInId: string
+    userSubscriptionId: string
+    checkStatus: string
+    workoutTime: string
+    fullName: string
+    createdAt: string
+    userId: string
+    subscriptionName: string
+    checkInTime: string
+}
+export interface WorkoutDaysResponseValue {
+    title?: string;
+    start: string;
+}
