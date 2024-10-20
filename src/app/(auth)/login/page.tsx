@@ -20,7 +20,6 @@ const LoginPage = () => {
             router.push('/');
         }
     }, [role, router, loading]);  // Trigger this effect when `role` or `router` changes
-
     return (
         <div
             className="relative bg-cover bg-center flex flex-col items-center justify-center flex-grow"
