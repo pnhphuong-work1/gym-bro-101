@@ -14,7 +14,7 @@ const HomeNav = ({isSticky, status}: HomeNavProps) => {
 
     return (
         <div
-            className={`left-0 right-0 z-10 p-4 bg-opacity-100 bg-black transition-all duration-300 ease-in-out 
+            className={`left-0 right-0 z-10 p-2 bg-opacity-100 bg-black transition-all duration-300 ease-in-out 
                 ${isSticky ? 'fixed top-0 bg-opacity-100' : 'relative bg-opacity-100'}`}
         >
             <div className="container mx-auto flex items-center">
@@ -40,7 +40,11 @@ const HomeNav = ({isSticky, status}: HomeNavProps) => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="/" className="hover:text-gray-300">SCHEDULE</a>
+                                <Link href={"/customer/schedule"}
+                                        className={`hover:text-gray-300 ${status === 'schedule' ? 'text-[#E0E84F]' : ''}`}
+                                >
+                                    SCHEDULE
+                                </Link>
                             </li>
                         </ul>
                     </nav>
