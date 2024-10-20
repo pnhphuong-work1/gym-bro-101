@@ -97,3 +97,21 @@ export interface UserSubscriptionByUserResponseValue {
         message: string;
     };
 }
+export interface PaymentResponseValue {
+    id: string,
+    bin: string,
+    amount: number,
+    payOsOrderId: number,
+    description: string,
+    paymentLinkId: string,
+    checkoutUrl: string,
+    status: string,
+    qrCode: string,
+}
+export interface PaymentResponseReturnValue {
+    id: string,
+    paymentStatus: string,
+    paymentDate: string,
+    amount: number,
+    userId: string,
+}
