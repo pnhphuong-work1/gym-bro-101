@@ -164,3 +164,19 @@ export async function getAllCustomers(search?: string, searchBy?: string, sortOr
         return error.response.data as ErrorResponseValue;
     }
 }
+
+export async function deleteUser(id: string) {
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
+    try {
+        const response = await axios
+            .delete<BaseResponseValue<UserResponseValue>>(`v2024-09-19/users/${id}`);
+
+        return response.data;
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}

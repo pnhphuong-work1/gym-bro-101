@@ -9,7 +9,7 @@ import {register} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import CreateBaseForm from "@/components/forms/CreateBaseForm";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onSuccess }) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [validationError, setValidationError] = useState<string[] | null>(null)
@@ -34,6 +34,7 @@ const RegisterForm = () => {
             if (!isErrorResponseValue(res)) {
                 setMessage("Registration successful! Check your email to verify your account.");
                 setError(null);
+                onSuccess();
                 return;
             }
             console.log(res.errors)

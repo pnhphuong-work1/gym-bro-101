@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import RegisterForm from "@/components/forms/RegisterForm";
 
-const CreateCustomerDialog = () => {
+const CreateCustomerDialog = ({ onSuccess }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleSuccess = () => {
+        onSuccess();  // Trigger data reload after registration is successful
+        setIsOpen(false); // Close the dialog after successful registration
+    };
+
+
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
@@ -18,7 +26,7 @@ const CreateCustomerDialog = () => {
                 <DialogHeader>
                     <DialogTitle>Create Customer</DialogTitle>
                 </DialogHeader>
-                <RegisterForm />
+                <RegisterForm onSuccess={handleSuccess} />
             </DialogContent>
         </Dialog>
     );
