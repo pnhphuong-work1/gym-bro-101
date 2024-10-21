@@ -60,7 +60,7 @@ const Subscription = () => {
                     <div className="w-[80%] h-0.5 bg-white mt-4"></div>
                     <div className='flex mt-5'>
                         <h2 className='text-4xl'>{formatPriceVND(third.price)}</h2>
-                        <p className='text-white text-xl'>/month</p>
+                        <p className='text-white text-xl'>/{third.totalMonth} month</p>
                     </div>
                     <div className='text-xl mt-3 w-full justify-center items-center flex flex-col'>
                         <p>{third.totalWorkoutTime}</p>
@@ -81,7 +81,7 @@ const Subscription = () => {
                     <div className="w-[80%] h-0.5 bg-white mt-4"></div>
                     <div className='flex mt-5'>
                         <h2 className='text-5xl  text-[#E0E84F]'>{formatPriceVND(first.price)}</h2>
-                        <p className='text-white text-xl'>/month</p>
+                        <p className='text-white text-xl'>/{first.totalMonth} month</p>
                     </div>
                     <div className='text-xl mt-3 w-full justify-center items-center flex flex-col text-white'>
                         <p>{first.totalWorkoutTime}</p>
@@ -101,7 +101,7 @@ const Subscription = () => {
                     <div className="w-[80%] h-0.5 bg-white mt-4"></div>
                     <div className='flex mt-5'>
                         <h2 className='text-4xl'>{formatPriceVND(second.price)}</h2>
-                        <p className='text-white text-xl'>/month</p>
+                        <p className='text-white text-xl'>/{second.totalMonth} month</p>
                     </div>
                     <div className='text-xl mt-3 w-full justify-center items-center flex flex-col'>
                         <p>{second.totalWorkoutTime}</p>

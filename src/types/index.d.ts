@@ -72,6 +72,7 @@ export interface SubscriptionResponseValue {
     totalWorkoutTime: string;
     price: number;
     dayGroupId: string;
+    totalMonth: number;
     group: string;
 }
 export interface UserSubscriptionResponseValue {

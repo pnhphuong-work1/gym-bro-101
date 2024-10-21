@@ -116,10 +116,9 @@ const SchedulePage = () => {
         )
     return (
         <div className={"h-full"}>
-            <div className={""}>
+            <div className={"h-lvh"}>
                 <Header/>
                 <HomeNav isSticky={isSticky} status={"schedule"}/>
-            </div>
             <div className="h-12 bg-gray-800 text-white flex items-center justify-center text-2xl">
                 YOUR SCHEDULE
             </div>
@@ -143,7 +142,7 @@ const SchedulePage = () => {
                     />
                 </Card>
             </div>
-
+            </div>
         </div>
     );
 };
