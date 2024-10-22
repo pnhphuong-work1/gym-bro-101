@@ -13,6 +13,7 @@ import PaginationBase from "@/components/shared/PaginationBase";
 import CreateCustomerDialog from "@/components/shared/dialog/CreateCustomerDialog";
 import {CaretSortIcon} from "@radix-ui/react-icons";
 import UserDialog from "@/components/shared/dialog/UserDialog";
+import DeleteConfirmDialog from "@/components/shared/dialog/DeleteConfirmDialog";
 
 const CustomerTableHeader = [
     {name: 'Id', sortable: false, sortKey: 'id'},
@@ -44,11 +45,22 @@ const CustomerTable = () => {
             setSortOrder('asc');
         }
     }
-    useEffect(() => {
+
+    const handleDataReload = () => {
+        console.log('reload');
+        fetchData();
+    };
+
+    const handleDelete = (userId: string) => {
+        handleDataReload();
+    };
+
+    const fetchData = () => {
         setLoading(true);
         getAllCustomers(search, 'fullName', sortOrder, sortBy, page, limit)
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
+                    console.log("New data:", response.value.items);
                     setUsers(response.value.items);
                     setPage(response.value.pageIndex);
                     setTotalCounts(response.value.totalCount);
@@ -61,15 +73,19 @@ const CustomerTable = () => {
                 console.log(error);
             })
             .finally(() => {
-                setLoading(false); // Set loading to false after fetching data
+                setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        fetchData();
     }, [page, search, sortBy, sortOrder]);
 
     return (
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
                 <CardTitle>Manager Dashboard</CardTitle>
-                <CreateCustomerDialog/>
+                <CreateCustomerDialog onSuccess={handleDataReload} />
             </CardHeader>
             <CardContent>
                 <Table>
@@ -111,12 +127,8 @@ const CustomerTable = () => {
                                     <TableCell>{user.totalPayment}</TableCell>
                                     <TableCell className="flex gap-3">
                                         <UserDialog editable={false} id={user.id} isCustomer={true} />
-                                        <UserDialog editable={true} id={user.id} isCustomer={true} />
-                                        <Button className="bg-red-400 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/customer/${user.id}`}>
-                                                Delete
-                                            </Link>
-                                        </Button>
+                                        <UserDialog editable={true} id={user.id} isCustomer={true} onSuccess={handleDataReload} />
+                                        <DeleteConfirmDialog userId={user.id} onSuccess={handleDataReload} />
                                     </TableCell>
                                 </TableRow>
                             ))

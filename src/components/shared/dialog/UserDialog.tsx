@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import UserForm from "@/components/forms/UserForm";
@@ -7,11 +7,22 @@ interface UserDialogProps {
     editable: boolean;
     id: string;
     isCustomer: boolean;
+    onSuccess?: () => void;
 }
 
-const UserDialog = ({editable, id, isCustomer} : UserDialogProps) => {
+const UserDialog = ({editable, id, isCustomer, onSuccess} : UserDialogProps) => {
+
+    const [open, setOpen] = useState(false);
+
+    const handleSuccess =  () => {
+        if (onSuccess) {
+            onSuccess();
+        }
+        setOpen(false);
+    };
+
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
@@ -24,7 +35,7 @@ const UserDialog = ({editable, id, isCustomer} : UserDialogProps) => {
                 <DialogHeader>
                     <DialogTitle>{editable ? "Edit User" : "User"}</DialogTitle>
                 </DialogHeader>
-                <UserForm editable={editable} id={id} isCustomer={isCustomer} />
+                <UserForm editable={editable} id={id} isCustomer={isCustomer} onSuccess={handleSuccess} />
             </DialogContent>
         </Dialog>
     );

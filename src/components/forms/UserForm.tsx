@@ -22,9 +22,10 @@ interface UserFormProps {
     editable: boolean;
     id: string;
     isCustomer: boolean;
+    onSuccess?: () => void;
 }
 
-const UserForm = ({editable, id, isCustomer}: UserFormProps) => {
+const UserForm = ({editable, id, isCustomer, onSuccess}: UserFormProps) => {
     const [subcriptions, setSubscriptions] = useState<SubscriptionResponseValue[]>([])
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
@@ -74,6 +75,11 @@ const UserForm = ({editable, id, isCustomer}: UserFormProps) => {
             if (!isErrorResponseValue(res)) {
                 setMessage("User updated successfully!");
                 setError(null);
+
+                if (onSuccess) {
+                    onSuccess();
+                }
+
                 return;
             }
 
