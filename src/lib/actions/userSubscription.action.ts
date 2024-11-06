@@ -2,7 +2,7 @@
 
 import {getAxiosClient} from "@/lib/utils";
 import {
-    BasePaginationResponseValue,
+    BasePaginationResponseValue, BaseResponseValue,
     ErrorResponseValue,
     UserSubscriptionByUserResponseValue,
     UserSubscriptionResponseValue, WorkoutDaysResponseValue
@@ -24,7 +24,7 @@ export async function getUserSubscriptionByUserId(userId: string) {
 export async function getAllWorkoutDaysByUserId(userId: string) {
     const axios = getAxiosClient();
     try {
-        const response = await axios.get<WorkoutDaysResponseValue>(
+        const response = await axios.get<BaseResponseValue<WorkoutDaysResponseValue[]>>(
             `${baseUrl}/${userId}/workout-days`, {
             params: { userId }
         });
