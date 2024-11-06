@@ -3,11 +3,16 @@ import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@
 import {Button} from "@/components/ui/button";
 import RegisterForm from "@/components/forms/RegisterForm";
 
-const CreateCustomerDialog = ({ onSuccess }) => {
+interface prop{
+    onSuccess?: () => void;
+}
+const CreateCustomerDialog = ({ onSuccess }: prop) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSuccess = () => {
-        onSuccess();  // Trigger data reload after registration is successful
+        if (onSuccess) {
+            onSuccess();
+        }  // Trigger data reload after registration is successful
         setIsOpen(false); // Close the dialog after successful registration
     };
 
