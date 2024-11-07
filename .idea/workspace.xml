@@ -4,30 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="fix bugs">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; phatnh13">
+      <change afterPath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/reset-password/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/verify-email/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="phatnh13" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2nQRdT0euPYFelCD9P4hfeJjxiC" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "viet",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "E:\\FPTU\\2024_8_FALL\\PRN231\\Project\\GymFe\\gym-bro-101\\node_modules\\typescript\\lib"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PRN231/Gym_WebAPI/Gym_FE/gym-bro-101&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="npm.build">
+}</component>
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -50,11 +94,22 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="fix bugs">
       <option name="closed" value="true" />
@@ -72,12 +127,90 @@
       <option name="project" value="LOCAL" />
       <updated>1728894137328</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix bugs">
+      <option name="closed" value="true" />
+      <created>1728894717239</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728894717239</updated>
+    </task>
+    <task id="LOCAL-00004" summary="adding logout">
+      <option name="closed" value="true" />
+      <created>1728899467432</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728899467432</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="adding logout" />
+      <created>1728903400616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728903400616</updated>
+      <workItem from="1728903401787" duration="5915000" />
+      <workItem from="1728995007391" duration="185000" />
+      <workItem from="1729055744193" duration="122000" />
+      <workItem from="1729151237392" duration="4983000" />
+      <workItem from="1729174377198" duration="123000" />
+      <workItem from="1729190508365" duration="33000" />
+      <workItem from="1729216283078" duration="6401000" />
+      <workItem from="1729415786259" duration="419000" />
+      <workItem from="1729421842701" duration="4492000" />
+      <workItem from="1729451357283" duration="21000" />
+      <workItem from="1729513633536" duration="15968000" />
+    </task>
+    <task id="LOCAL-00005" summary="fix bug 9:45">
+      <option name="closed" value="true" />
+      <created>1728960351737</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728960351737</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&lt;update&gt; payment">
+      <option name="closed" value="true" />
+      <created>1729241128658</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729241128658</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&lt;merge&gt; phatnh13">
+      <option name="closed" value="true" />
+      <created>1729431021553</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729431021553</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding sort in table" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="adding logout" />
+    <MESSAGE value="fix bug 9:45" />
+    <MESSAGE value="w" />
+    <MESSAGE value="&lt;update&gt; payment" />
+    <MESSAGE value="&lt;update&gt; subscription" />
+    <MESSAGE value="&lt;merge&gt; phatnh13" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;merge&gt; phatnh13" />
   </component>
 </project>

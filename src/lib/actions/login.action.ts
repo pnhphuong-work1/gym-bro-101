@@ -1,6 +1,6 @@
 'use server'
 
-import {getAxiosClient, isErrorResponseValue} from "@/lib/utils";
+import {getAxiosClient, getAxiosClientWithToken, isErrorResponseValue} from "@/lib/utils";
 import {AuthResponseValue, BaseResponseValue, ErrorResponseValue} from "@/types";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
@@ -23,6 +23,39 @@ export async function login({ email, password } : { email: string, password: str
     } catch (error : any) {
         return error.response.data as ErrorResponseValue;
     }
+}
+
+export async function logout() {
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        // Already logged out, just redirect to login
+        return true;
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
+
+    try {
+        await axios.post<BaseResponseValue<null>>('v2024-09-29/auth/logout', {
+            accessToken: credentials.accessToken,
+        });
+
+        // Delete the token
+        cookies().set('tokens', '', {
+            path: '/', // Ensure the path matches the cookie creation path
+            maxAge: 0, // This will force the cookie to be deleted
+        });
+        //localStorage.removeItem('authToken');
+
+        // You may also want to clear any client-side data here
+        // For example, if you use local storage, you can clear it:
+        // localStorage.clear();
+
+    } catch (error: any) {
+       // throw error
+        console.error(error);
+        return false;
+    }
+
+    return true;
 }
 
 export async function silentLogin(accessToken: string, refreshToken: string) {

@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import CreateManagerDialog from "@/components/shared/dialog/CreateManagerDialog";
 import PaginationBase from "@/components/shared/PaginationBase";
 import {CaretSortIcon} from "@radix-ui/react-icons";
+import UserDialog from "@/components/shared/dialog/UserDialog";
 
 const UserTableHeader = [
     { name: 'Id', sortable: false, sortKey: 'id' },
@@ -104,11 +105,8 @@ const UserTable = () => {
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell>{user.phoneNumber}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <Button className="bg-blue-200 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${user.id}`}>
-                                                Edit
-                                            </Link>
-                                        </Button>
+                                        <UserDialog editable={false} id={user.id} isCustomer={false} />
+                                        <UserDialog editable={true} id={user.id} isCustomer={false} />
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
                                             <Link href={`/admin/dashboard/manager/${user.id}`}>
                                                 Delete

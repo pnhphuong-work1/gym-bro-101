@@ -41,6 +41,7 @@ export interface AuthResponseValue {
     refreshToken: string;
     role: string;
     fullName: string;
+    userId: string;
     accessTokenExpiration: Date;
     refreshTokenExpiration: Date;
 }
@@ -51,6 +52,7 @@ export interface UserResponseValue {
     userName: string;
     fullName: string;
     phoneNumber: string;
+    dateOfBirth: Date;
 }
 
 export interface CustomerResponseValue {
@@ -59,8 +61,10 @@ export interface CustomerResponseValue {
     userName: string;
     fullName: string;
     phoneNumber: string;
+    dateOfBirth: Date;
     totalSpentTime: number;
     totalPayment: number;
+    subscriptions: SubscriptionResponseValue[];
 }
 export interface SubscriptionResponseValue {
     id: string;
@@ -68,5 +72,64 @@ export interface SubscriptionResponseValue {
     totalWorkoutTime: string;
     price: number;
     dayGroupId: string;
+    totalMonth: number;
     group: string;
+}
+export interface UserSubscriptionResponseValue {
+    id: string,
+    userId: string,
+    subscriptionId: string,
+    paymentId: string,
+    paymentPrice: number,
+    workoutSteak: number,
+    longestWorkoutSteak: number,
+    lastWorkoutDate: string,
+    subscriptionEndDate: string,
+    group: string,
+    totalWorkoutTime: string,
+    name: string
+}
+export interface UserSubscriptionByUserResponseValue {
+    value: UserSubscriptionResponseValue[];
+    isSuccess: boolean;
+    isFailure: boolean;
+    error: {
+        code: string;
+        message: string;
+    };
+}
+export interface PaymentResponseValue {
+    id: string,
+    bin: string,
+    amount: number,
+    payOsOrderId: number,
+    description: string,
+    paymentLinkId: string,
+    checkoutUrl: string,
+    status: string,
+    qrCode: string,
+}
+export interface PaymentResponseReturnValue {
+    id: string,
+    paymentStatus: string,
+    paymentDate: string,
+    amount: number,
+    userId: string,
+}
+
+export interface CheckLogResponseValue {
+    id: string
+    checkInId: string
+    userSubscriptionId: string
+    checkStatus: string
+    workoutTime: string
+    fullName: string
+    createdAt: string
+    userId: string
+    subscriptionName: string
+    checkInTime: string
+}
+export interface WorkoutDaysResponseValue {
+    title?: string;
+    start: string;
 }

@@ -1,9 +1,5 @@
 export const adminNavLinks = [
     {
-        name: "Home",
-        href: "/admin/dashboard/home"
-    },
-    {
         name: "Revenue",
         href: "/admin/dashboard/revenue"
     },
@@ -14,5 +10,26 @@ export const adminNavLinks = [
     {
         name: "Customer",
         href: "/admin/dashboard/customer"
+    },
+    {
+        name: "Subscription",
+        href: "/admin/dashboard/subscription"
+    }
+];
+
+export enum Role {
+    Admin = "Admin",
+    Manager = "Manager",
+    User = "User"
+}
+
+export const managerNavLinks = [
+    {
+        name: "Logs",
+        href: "/manager/dashboard/check-log"
+    },
+    {
+        name: "Customers",
+        href: "/manager/dashboard/customer"
     }
 ];
