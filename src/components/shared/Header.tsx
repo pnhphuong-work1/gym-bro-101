@@ -15,7 +15,7 @@ const Header = () => {
     };
 
     const handleLogout = async () => {
-        localStorage.removeItem('authToken')
+        // localStorage.removeItem('authToken')
         await logout();
     };
 

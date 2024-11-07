@@ -12,9 +12,7 @@ const baseUrl = 'v2024-09-19/subscription-user'
 export async function getUserSubscriptionByUserId(userId: string) {
     const axios = getAxiosClient();
     try {
-        const response = await axios.get<UserSubscriptionByUserResponseValue>(`${baseUrl}/${userId}/user-subscriptions`, {
-            params: { userId }
-        });
+        const response = await axios.get<UserSubscriptionByUserResponseValue>(`${baseUrl}/${userId}/user-subscriptions`);
 
         return response.data; // Make sure this returns the right structure
     } catch (error: any) {
@@ -24,10 +22,9 @@ export async function getUserSubscriptionByUserId(userId: string) {
 export async function getAllWorkoutDaysByUserId(userId: string) {
     const axios = getAxiosClient();
     try {
-        const response = await axios.get<BaseResponseValue<WorkoutDaysResponseValue[]>>(
-            `${baseUrl}/${userId}/workout-days`, {
-            params: { userId }
-        });
+        const response = await axios.get<WorkoutDaysResponseValue[]>(
+            `${baseUrl}/${userId}/workout-days`);
+        console.log("response: ",response);
         return response.data; // Make sure this returns the right structure
     } catch (error: any) {
         return error.response.data as ErrorResponseValue; // Ensure this captures errors correctly

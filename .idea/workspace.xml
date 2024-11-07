@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;merge&gt; phatnh13">
-      <change afterPath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/(home)/subscription.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/memberships/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/checklogs.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/checklogs.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/login.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/login.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/userSubscription.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/userSubscription.action.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,22 +56,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PRN231/Gym_WebAPI/Gym_FE/gym-bro-101&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\PRN231\\Gym_WebAPI\\Gym_FE\\gym-bro-101\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/PRN231/Gym_WebAPI/Gym_FE/gym-bro-101",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "D:\\Repos\\FE\\Gymbro\\gym-bro-101\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -101,13 +103,6 @@
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -160,6 +155,7 @@
       <workItem from="1729421842701" duration="4492000" />
       <workItem from="1729451357283" duration="21000" />
       <workItem from="1729513633536" duration="15968000" />
+      <workItem from="1730995252619" duration="6966000" />
     </task>
     <task id="LOCAL-00005" summary="fix bug 9:45">
       <option name="closed" value="true" />

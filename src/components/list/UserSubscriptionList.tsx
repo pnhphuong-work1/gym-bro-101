@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { getUserSubscriptionByUserId } from "@/lib/actions/userSubscription.action";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { UserSubscriptionResponseValue } from "@/types";
@@ -12,7 +12,7 @@ const UserSubscriptionList = () => {
     const { userId } = useGlobalContext();
     const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
     const [selectedSubscription, setSelectedSubscription] = useState<UserSubscriptionResponseValue | null>(null); // State to hold selected subscription
-
+    const qrCodeRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
         console.log("userId:", userId);
         setLoading(true);
@@ -38,18 +38,19 @@ const UserSubscriptionList = () => {
         setDialogOpen(true); // Open dialog
     };
 
+
     return (
-        <div className='w-full'>
+        <div className='w-[80%] m-auto h-[60%] backdrop-blur-sm bg-white/20'>
             {loading ? (
-                <div className="text-center mb-4">
+                <div className="text-center">
                     <p>Loading...</p>
                 </div>
             ) : error ? (
-                <div className="text-red-500 text-center mb-4">
+                <div className="text-white text-center w-full">
                     <p>{error}</p>
                 </div>
             ) : (
-                <div className='flex w-full justify-center items-center mt-5'>
+                <div className='flex w-full justify-center items-center pt-6'>
                     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-16 w-[70%]">
                         {userSubscription.length > 0 ? (
                             userSubscription.map((subscription) => (
@@ -74,6 +75,7 @@ const UserSubscriptionList = () => {
             {/* QR Code Dialog */}
             <QRCodeDialog
                 isOpen={isDialogOpen}
+                qrcodeRef={qrCodeRef}
                 onClose={() => setDialogOpen(false)}
                 subscription={selectedSubscription}
             />
