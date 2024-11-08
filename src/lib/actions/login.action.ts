@@ -39,7 +39,7 @@ export async function logout() {
         });
 
         // Delete the token
-        cookies().set('tokens', {
+        cookies().set('tokens', "", {
             path: '/', // Ensure the path matches the cookie creation path
             maxAge: 0, // This will force the cookie to be deleted
         });
