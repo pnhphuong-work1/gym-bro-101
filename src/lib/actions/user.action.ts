@@ -74,7 +74,11 @@ export async function getCustomerById(id: string) {
 }
 
 export async function getManagerById(id: string) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
 
     try {
         const response = await axios
@@ -124,7 +128,11 @@ export async function verifyEmail({ email, token } : { email: string, token: str
 }
 
 export async function getAllManagers(search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         const response = await axios
             .get<BasePaginationResponseValue<UserResponseValue>>('v2024-09-19/managers', {

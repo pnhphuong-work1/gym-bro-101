@@ -7,7 +7,11 @@ import {createManager} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import CreateBaseForm from "@/components/forms/CreateBaseForm";
 
-const CreateManagerForm = () => {
+interface prop{
+    onSuccess?: () => void;
+}
+
+const CreateManagerForm = ({ onSuccess }: prop) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [message, setMessage] = useState<string | null>(null)
@@ -32,6 +36,9 @@ const CreateManagerForm = () => {
             if (!isErrorResponseValue(res)) {
                 setMessage("Registration successful! Check your email to verify your account.");
                 setError(null);
+                if (onSuccess) {
+                    onSuccess();
+                }
                 return;
             }
             if (res.errors && res.errors.length > 0) {
