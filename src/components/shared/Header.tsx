@@ -5,20 +5,22 @@ import { Button } from "@/components/ui/button";
 import { useGlobalContext } from "@/context/GlobalContext";
 import Link from "next/link";
 import {logout} from "@/lib/actions/login.action";
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
-    const { fullName, role } = useGlobalContext();
+    const { fullName, role, setFullName, setRole } = useGlobalContext();
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
     const handleLogout = async () => {
-        localStorage.removeItem('authToken')
-        await logout();
-    };
-
+        const res = await logout();
+        if (res) {
+            setFullName('');
+            setRole('');
+        }
+    }
     const buttonByRole = () => {
         switch (role) {
             case 'Admin':

@@ -14,7 +14,6 @@ const UserSubscriptionList = () => {
     const [selectedSubscription, setSelectedSubscription] = useState<UserSubscriptionResponseValue | null>(null); // State to hold selected subscription
 
     useEffect(() => {
-        console.log("userId:", userId);
         setLoading(true);
         setError(''); // Reset error state before fetching
         getUserSubscriptionByUserId(userId)

@@ -23,7 +23,7 @@ import {isErrorResponseValue} from "@/lib/utils";
 
 const LoginForm = () => {
     const router = useRouter();
-    const {setRole, setFullName} = useGlobalContext();
+    const {setRole, setFullName, setUserId} = useGlobalContext();
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -42,6 +42,7 @@ const LoginForm = () => {
             if (!isErrorResponseValue(res)) {
                 setRole(res.value.role);
                 setFullName(res.value.fullName);
+                setUserId(res.value.userId)
                 router.push('/');
                 return;
             }

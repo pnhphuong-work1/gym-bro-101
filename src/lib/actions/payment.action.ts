@@ -4,9 +4,8 @@ import {
     PaymentResponseReturnValue,
     PaymentResponseValue,
 } from "@/types";
-import {getAxiosClient, getAxiosClientWithToken} from "@/lib/utils";
-import {getUserCredentials} from "@/lib/actions/login.action";
-import {redirect} from "next/navigation";
+import { getAxiosClient } from "@/lib/utils";
+
 
 const baseUrl = "/v2024-09-29/payments"; // Relative path
 
