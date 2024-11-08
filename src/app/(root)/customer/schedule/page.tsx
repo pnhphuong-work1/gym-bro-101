@@ -61,7 +61,7 @@ const SchedulePage = () => {
                     <Header/>
                     <HomeNav isSticky={false} status={"schedule"}/>
                 </div>
-                <p>Loading...</p>
+                <p>You need to buy any subscription to view the schedule</p>
             </div>
         )
     if (error)

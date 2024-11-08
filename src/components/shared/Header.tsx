@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 const Header = () => {
     const { fullName, role, setFullName, setRole } = useGlobalContext();
     const [dropdownOpen, setDropdownOpen] = useState(false);
-
+    const router = useRouter();
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -20,6 +20,7 @@ const Header = () => {
             setFullName('');
             setRole('');
         }
+        router.push("/login")
     }
     const buttonByRole = () => {
         switch (role) {

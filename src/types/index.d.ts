@@ -133,3 +133,11 @@ export interface WorkoutDaysResponseValue {
     title?: string;
     start: string;
 }
+export interface RevenueResponseValue{
+    totalMember: number;
+    totalRevenue: number;
+    weeklyRevenue: [
+        week: string,
+        revenue: number,
+    ]
+}
