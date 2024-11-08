@@ -21,7 +21,7 @@ const Page = () => {
                          height: '100%',
                      }}>
                     <div className='w-full h-full' style={{background: 'rgba(0, 0, 0, 0.5)'}}>
-                <h1 className='text-7xl flex justify-center text-red-500 pb-5'
+                <h1 className='text-7xl flex justify-center text-red-500 py-3'
                     style={{fontFamily: 'Monda, sans-serif'}}>Subscription</h1>
                 <UserSubscriptionList />
                     </div>
