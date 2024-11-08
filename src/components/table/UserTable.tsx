@@ -13,6 +13,7 @@ import CreateManagerDialog from "@/components/shared/dialog/CreateManagerDialog"
 import PaginationBase from "@/components/shared/PaginationBase";
 import {CaretSortIcon} from "@radix-ui/react-icons";
 import UserDialog from "@/components/shared/dialog/UserDialog";
+import DeleteConfirmDialog from "@/components/shared/dialog/DeleteConfirmDialog";
 
 const UserTableHeader = [
     { name: 'Id', sortable: false, sortKey: 'id' },
@@ -43,7 +44,15 @@ const UserTable = () => {
         }
     }
 
+    const handleDataReload = () => {
+        fetchData();
+    };
+
     useEffect(() => {
+        fetchData();
+    }, [page, search, sortBy, sortOrder]);
+
+    const fetchData = () => {
         setLoading(true);
         getAllManagers(search, 'fullName', sortOrder, sortBy, page, limit)
             .then((response) => {
@@ -59,16 +68,14 @@ const UserTable = () => {
             .catch((error) => {
                 console.log(error);
             })
-            .finally(() => {
-                setLoading(false); // Set loading to false after fetching data
-            });
-    }, [page, search, sortBy, sortOrder]);
+            .finally(() => setLoading(false));
+    };
 
     return (
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
                 <CardTitle>Manager Dashboard</CardTitle>
-                <CreateManagerDialog />
+                <CreateManagerDialog onSuccess={handleDataReload} />
             </CardHeader>
             <CardContent>
                 <Table>
@@ -106,12 +113,10 @@ const UserTable = () => {
                                     <TableCell>{user.phoneNumber}</TableCell>
                                     <TableCell className="flex gap-3">
                                         <UserDialog editable={false} id={user.id} isCustomer={false} />
-                                        <UserDialog editable={true} id={user.id} isCustomer={false} />
-                                        <Button className="bg-red-400 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${user.id}`}>
-                                                Delete
-                                            </Link>
-                                        </Button>
+                                        <UserDialog editable={true} id={user.id} isCustomer={false}
+                                            onSuccess={handleDataReload}
+                                        />
+                                        <DeleteConfirmDialog userId={user.id} onSuccess={handleDataReload}/>
                                     </TableCell>
                                 </TableRow>
                             ))

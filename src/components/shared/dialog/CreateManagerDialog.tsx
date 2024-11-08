@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Dialog,
     DialogContent,
@@ -8,9 +8,24 @@ import {
 } from "@/components/ui/dialog"
 import {Button} from "@/components/ui/button";
 import CreateManagerForm from "@/components/forms/CreateManagerForm";
-const CreateManagerDialog = () => {
+
+interface prop{
+    onSuccess?: () => void;
+}
+
+const CreateManagerDialog = ({ onSuccess }: prop) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleSuccess = () => {
+        if (onSuccess) {
+            onSuccess();
+        }  // Trigger data reload after registration is successful
+        setIsOpen(false); // Close the dialog after successful registration
+    };
+
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
@@ -23,7 +38,7 @@ const CreateManagerDialog = () => {
                 <DialogHeader>
                     <DialogTitle>Create User</DialogTitle>
                 </DialogHeader>
-                <CreateManagerForm />
+                <CreateManagerForm onSuccess={handleSuccess} />
             </DialogContent>
         </Dialog>
     );
