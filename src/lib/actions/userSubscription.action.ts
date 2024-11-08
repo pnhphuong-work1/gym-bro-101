@@ -22,7 +22,7 @@ export async function getUserSubscriptionByUserId(userId: string) {
 export async function getAllWorkoutDaysByUserId(userId: string) {
     const axios = getAxiosClient();
     try {
-        const response = await axios.get<WorkoutDaysResponseValue[]>(
+        const response = await axios.get<BaseResponseValue<WorkoutDaysResponseValue[]>>(
             `${baseUrl}/${userId}/workout-days`);
         console.log("response: ",response);
         return response.data; // Make sure this returns the right structure
