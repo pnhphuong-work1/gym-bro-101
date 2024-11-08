@@ -23,7 +23,13 @@ const CustomerTableHeader = [
     {name: 'Spent Time (Hours)', sortable: true, sortKey: 'totalSpentTime'},
     {name: 'Payment (VNĐ)', sortable: true, sortKey: 'totalPayment'},
     {name: 'Action', sortable: false, sortKey: 'action'},
-]
+];
+
+const searchOptions = [
+    { label: "Full Name", value: "fullName" },
+    { label: "Email", value: "email" },
+    { label: "Phone Number", value: "phoneNumber" }
+];
 
 const CustomerTable = () => {
     const [users, setUsers] = useState<CustomerResponseValue[]>([]);
@@ -34,6 +40,7 @@ const CustomerTable = () => {
     const [hasNextPage, setHasNextPage] = useState<boolean>(false);
     const [hasPrevPage, setHasPrevPage] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
+    const [searchBy, setSearchBy] = useState<string>('fullName');
     const [sortBy, setSortBy] = useState<string>('totalPayment');
     const [sortOrder, setSortOrder] = useState<string>('desc');
 
@@ -46,6 +53,11 @@ const CustomerTable = () => {
         }
     }
 
+    const handleSearch = () => {
+        setPage(1); // Reset to the first page when a new search is performed
+        fetchData();
+    };
+
     const handleDataReload = () => {
         console.log('reload');
         fetchData();
@@ -57,7 +69,7 @@ const CustomerTable = () => {
 
     const fetchData = () => {
         setLoading(true);
-        getAllCustomers(search, 'fullName', sortOrder, sortBy, page, limit)
+        getAllCustomers(search, searchBy, sortOrder, sortBy, page, limit)
             .then((response) => {
                 if (!isErrorResponseValue(response)) {
                     console.log("New data:", response.value.items);
@@ -79,15 +91,36 @@ const CustomerTable = () => {
 
     useEffect(() => {
         fetchData();
-    }, [page, search, sortBy, sortOrder]);
+    }, [page, sortBy, sortOrder]);
 
     return (
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
                 <CardTitle>Manager Dashboard</CardTitle>
-                <CreateCustomerDialog onSuccess={handleDataReload} />
+                <CreateCustomerDialog onSuccess={handleDataReload}/>
             </CardHeader>
             <CardContent>
+                <div className="flex gap-4 mb-4">
+                    <select
+                        value={searchBy}
+                        onChange={(e) => setSearchBy(e.target.value)}
+                        className="p-2 border rounded"
+                    >
+                        {searchOptions.map(option => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                    </select>
+                    <input
+                        type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search..."
+                        className="p-2 border rounded w-60"
+                    />
+                    <Button onClick={handleSearch} className="p-2">
+                        Search
+                    </Button>
+                </div>
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -101,7 +134,7 @@ const CustomerTable = () => {
                                                 onClick={() => handleChangeSort(header.sortKey)}
                                             >
                                                 {header.name}
-                                                <CaretSortIcon className="ml-2 w-4 h-4" />
+                                                <CaretSortIcon className="ml-2 w-4 h-4"/>
                                             </Button>
                                         ) : header.name
                                     }
@@ -126,9 +159,10 @@ const CustomerTable = () => {
                                     <TableCell>{user.totalSpentTime}</TableCell>
                                     <TableCell>{user.totalPayment}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <UserDialog editable={false} id={user.id} isCustomer={true} />
-                                        <UserDialog editable={true} id={user.id} isCustomer={true} onSuccess={handleDataReload} />
-                                        <DeleteConfirmDialog userId={user.id} onSuccess={handleDataReload} />
+                                        <UserDialog editable={false} id={user.id} isCustomer={true}/>
+                                        <UserDialog editable={true} id={user.id} isCustomer={true}
+                                                    onSuccess={handleDataReload}/>
+                                        <DeleteConfirmDialog userId={user.id} onSuccess={handleDataReload}/>
                                     </TableCell>
                                 </TableRow>
                             ))
