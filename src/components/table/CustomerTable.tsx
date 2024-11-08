@@ -59,7 +59,6 @@ const CustomerTable = () => {
     };
 
     const handleDataReload = () => {
-        console.log('reload');
         fetchData();
     };
 

@@ -9,10 +9,10 @@ import {register} from "@/lib/actions/user.action";
 import {isErrorResponseValue} from "@/lib/utils";
 import CreateBaseForm from "@/components/forms/CreateBaseForm";
 
-interface prob{
+interface prop{
     onSuccess?: () => void;
 }
-const RegisterForm = ({ onSuccess }: prob) => {
+const RegisterForm = ({ onSuccess }: prop) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [validationError, setValidationError] = useState<string[] | null>(null)
