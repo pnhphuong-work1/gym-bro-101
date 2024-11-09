@@ -9,6 +9,7 @@ interface GlobalContextProps {
     role: string;
     setFullName: (fullName: string) => void;
     setRole: (role: string) => void;
+    setUserId: (userId: string) => void;
     loading: boolean;
 }
 
@@ -35,7 +36,7 @@ export function GlobalProvider({children} : {children: React.ReactNode}) {
     }, []);
 
     return (
-        <GlobalContext.Provider value={{userId, fullName, role, setFullName, setRole, loading}}>
+        <GlobalContext.Provider value={{userId, fullName, role, setFullName, setRole, setUserId, loading}}>
             {children}
         </GlobalContext.Provider>
     );

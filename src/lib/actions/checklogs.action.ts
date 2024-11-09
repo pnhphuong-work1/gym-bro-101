@@ -49,3 +49,31 @@ export async function getAllCheckLogs(checkStatus?: string, timeFrame?: string, 
         return error.response.data as ErrorResponseValue;
     }
 }
+export async function getAllCheckLogsByUserId(userId: string,checkStatus?: string, timeFrame?: string, search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
+    try {
+        const response = await axios
+            .get<BasePaginationResponseValue<CheckLogResponseValue>>(`v2024-09-19/check-logs/user/${userId}`, {
+                params: {
+                    userId,
+                    checkStatus,
+                    timeFrame,
+                    search,
+                    searchBy,
+                    sortOrder,
+                    sortBy,
+                    currentPage,
+                    pageSize
+                }
+            });
+
+        return response.data;
+    } catch (error : any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+

@@ -12,7 +12,7 @@ const baseUrl = 'v2024-09-19/subscription-user'
 export async function getUserSubscriptionByUserId(userId: string) {
     const axios = getAxiosClient();
     try {
-        const response = await axios.get<UserSubscriptionByUserResponseValue>(`${baseUrl}/${userId}/user-subscriptions`, {
+        const response = await axios.get<BaseResponseValue<UserSubscriptionByUserResponseValue>>(`${baseUrl}/${userId}/user-subscriptions`, {
             params: { userId }
         });
 
