@@ -34,7 +34,7 @@ export function isErrorResponseValue(value: any): value is ErrorResponseValue {
 
 export function formatDateTime(isoString: string): string {
     const date = new Date(isoString);
-
+    date.setUTCHours(date.getUTCHours() + 7); // Convert to local timezone
     // Extract hours and minutes
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
