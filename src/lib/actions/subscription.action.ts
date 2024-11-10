@@ -1,7 +1,13 @@
 'use server';
 
 import {getAxiosClient} from "@/lib/utils";
-import {BasePaginationResponseValue, ErrorResponseValue, SubscriptionResponseValue} from "@/types";
+import {
+    BasePaginationResponseValue,
+    BaseResponseValue,
+    DayGroupResponseValue,
+    ErrorResponseValue,
+    SubscriptionResponseValue
+} from "@/types";
 
 const baseUrl = 'v2024-09-19/subscriptions';
 export async function getAllSubscriptions(search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
@@ -31,5 +37,61 @@ export async function getSubscriptionById(id: string) {
         return response.data;
     } catch (error: any) {
         return error.response ? error.response.data : { error: "Unknown error" }; // Ensure a valid response is returned
+    }
+}
+
+export async function createSubscription({name, totalWorkoutTime, price, totalMonth, group}: {name: string, totalWorkoutTime: string, price: number, totalMonth: number, group: string}) {
+    const axios = getAxiosClient();
+    try {
+        const response = await axios.post<BaseResponseValue<any>>(baseUrl, {
+            name,
+            totalWorkoutTime,
+            price,
+            totalMonth,
+            group
+        });
+        return response.data;
+    } catch (error: any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+export async function deleteSubscription(id: string) {
+    const axios = getAxiosClient();
+    try {
+        console.log("del subs in axios", id);
+        const res = await axios.delete<BaseResponseValue<any>>(`${baseUrl}/${id}`);
+        return res.data;
+    } catch (error: any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+export async function updateSubscription(
+    {name, totalWorkoutTime, price, totalMonth, group}
+        : {name: string, totalWorkoutTime: string, price: number, totalMonth: number, group: string}, id: string) {
+    const axios = getAxiosClient();
+    try {
+        const response = await axios.put<BaseResponseValue<any>>(`${baseUrl}/${id}`, {
+            name,
+            totalWorkoutTime,
+            price,
+            totalMonth,
+            group
+        });
+        return response.data;
+    } catch (error: any) {
+        return error.response.data as ErrorResponseValue;
+    }
+}
+
+//fetch day group
+export async function fetchDayGroup() {
+    const axios = getAxiosClient();
+    try {
+        const response = await axios.get<BasePaginationResponseValue<DayGroupResponseValue>>(`/v2024-09-19/dayGroups`);
+        return response.data;
+    } catch (error: any) {
+        return error.response.data as ErrorResponseValue;
     }
 }

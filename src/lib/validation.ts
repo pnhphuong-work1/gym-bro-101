@@ -19,6 +19,14 @@ export const RegisterSchema = z.object({
     message: "Passwords do not match",
 });
 
+export const CreateSubscriptionSchema = z.object({
+    name: z.string().min(1, "Please enter a name"),
+    totalWorkoutTime: z.string().min(1, "Please enter a total workout time"),
+    price: z.preprocess((value) => parseFloat(value as string), z.number().min(0, "Please enter a price")),
+    totalMonth: z.number().min(1, "Please enter a total month"),
+    group: z.string().min(1, "Please enter a group"),
+});
+
 export const ForgotPasswordSchema = z.object({
     email: z.string().email("Please enter a valid email"),
 })
