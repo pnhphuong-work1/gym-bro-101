@@ -4,7 +4,6 @@ import { useGlobalContext } from "@/context/GlobalContext";
 import { UserSubscriptionResponseValue } from "@/types";
 import { isErrorResponseValue } from "@/lib/utils";
 import QRCodeDialog from '@/components/canvas/qr-code';
-import {useUserSubscriptionContext} from "@/context/SubscriptionContext"; // Import the QR code dialog component
 
 const UserSubscriptionList = () => {
     const [userSubscription, setUserSubscription] = useState<UserSubscriptionResponseValue[]>([]);
