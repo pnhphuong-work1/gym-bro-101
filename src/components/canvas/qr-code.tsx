@@ -37,7 +37,7 @@ const QRCodeDialog = ({ isOpen, qrcodeRef, onClose, subscription }) => {
                     ref={qrcodeRef}
                 >
                     <Canvas
-                        text={`Subscription ID: ${subscriptionId}
+                        text={`Subscription ID: ${subscription?.id}
                                User ID: ${userId}
                         `}
                         options={{
