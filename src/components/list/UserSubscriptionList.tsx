@@ -11,7 +11,6 @@ const UserSubscriptionList = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const { userId } = useGlobalContext();
-    const { setSubscriptionId } = useUserSubscriptionContext()
     const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
     const [selectedSubscription, setSelectedSubscription] = useState<UserSubscriptionResponseValue | null>(null);
     const qrCodeRef = useRef<HTMLCanvasElement | null>(null);

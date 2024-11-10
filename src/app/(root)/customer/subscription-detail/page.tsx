@@ -14,10 +14,9 @@ import {isErrorResponseValue} from "@/lib/utils";
 import {getSubscriptionById} from "@/lib/actions/subscription.action";
 import {UserSubscriptionResponseValue} from "@/types";
 import {getUserSubscriptionByUserId} from "@/lib/actions/userSubscription.action";
-import {boolean} from "zod";
 
 const Page = () => {
-    const {subscriptionId, setSubscriptionId} = useUserSubscriptionContext();
+    const {subscriptionId} = useUserSubscriptionContext();
     const {userId} = useGlobalContext();
     const router = useRouter();
     const searchParams = useSearchParams(); // To get query parameters

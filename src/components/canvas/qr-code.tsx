@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useRef} from 'react';
+import React from 'react';
 import { useQRCode } from 'next-qrcode';
 import {useUserSubscriptionContext} from "@/context/SubscriptionContext";
 import {useGlobalContext} from "@/context/GlobalContext";
