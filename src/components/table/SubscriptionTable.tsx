@@ -11,6 +11,10 @@ import {isErrorResponseValue} from "@/lib/utils";
 import {Skeleton} from "@/components/ui/skeleton";
 import Link from "next/link";
 import PaginationBase from "@/components/shared/PaginationBase";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
+import CreateSubscriptionForm from "@/components/forms/CreateSubscriptionForm";
+import DeleteSubscriptionDialog from "@/components/shared/dialog/DeleteSubscriptionDialog";
+import SubscriptionDialog from "@/components/shared/dialog/SubscriptionDialog";
 
 const SubscriptionTableHeader = [
     {name: "Id", sortable: false, sortKey: 'id'},
@@ -28,9 +32,11 @@ const SubscriptionTable = () => {
     const [limit, setLimit] = useState<number>(10);
     const [hasNextPage, setHasNextPage] = useState<boolean>(false);
     const [hasPrevPage, setHasPrevPage] = useState<boolean>(false);
+    const [createDialogIsOpen, setCreateDialogIsOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
     const [sortBy, setSortBy] = useState<string>('price');
     const [sortOrder, setSortOrder] = useState<string>('desc');
+    const [forceReload, setForceReload] = useState<boolean>(false);
 
     const handleChangeSort = (sortKey: string) => {
         if (sortKey === sortBy) {
@@ -39,6 +45,15 @@ const SubscriptionTable = () => {
             setSortBy(sortKey);
             setSortOrder('asc');
         }
+    }
+
+    const handleOpenCreateDialog = () => {
+        setCreateDialogIsOpen(true);
+        console.log("dialog ", createDialogIsOpen);
+    }
+    const handleDataReload = () => {
+        setCreateDialogIsOpen(false);
+        setForceReload(!forceReload);
     }
 
     useEffect(() => {
@@ -58,12 +73,33 @@ const SubscriptionTable = () => {
             }).finally(() => {
                 setLoading(false);
             });
-    }, []);
+    }, [createDialogIsOpen, forceReload]);
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Subscription Table</CardTitle>
+                <CardTitle className={"text-2xl text-center"}>Subscription Table</CardTitle>
+                <Dialog open={createDialogIsOpen}
+                        onOpenChange={setCreateDialogIsOpen}>
+                    <DialogTrigger asChild>
+                        <Button onClick={handleOpenCreateDialog}
+                                className="bg-blue-500 text-white w-[50%] mx-auto px-2 py-1 rounded">
+                            Create Subscription
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>
+                                Create Subscription
+                            </DialogTitle>
+                        </DialogHeader>
+                        <div className="flex justify-center">
+                            <div className="w-[80%]">
+                                <CreateSubscriptionForm onSuccess={handleDataReload} />
+                            </div>
+                        </div>
+                    </DialogContent>
+                </Dialog>
             </CardHeader>
             <CardContent>
                 <Table>
@@ -100,15 +136,9 @@ const SubscriptionTable = () => {
                                     <TableCell>{sub.totalWorkoutTime}</TableCell>
                                     <TableCell>{sub.price}</TableCell>
                                     <TableCell className="flex gap-3">
-                                        <Button className="bg-blue-200 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${sub.id}`}>
-                                                Edit
-                                            </Link>
-                                        </Button>
+                                        <SubscriptionDialog subscription={sub} onSuccess={handleDataReload} />
                                         <Button className="bg-red-400 text-white px-2 py-1 rounded">
-                                            <Link href={`/admin/dashboard/manager/${sub.id}`}>
-                                                Delete
-                                            </Link>
+                                            <DeleteSubscriptionDialog subscriptionId={sub.id} onSuccess={handleDataReload} />
                                         </Button>
                                     </TableCell>
                                 </TableRow>
@@ -133,6 +163,7 @@ const SubscriptionTable = () => {
                     hasPrevPage={hasPrevPage}
                 />
             </CardFooter>
+
         </Card>
     );
 };

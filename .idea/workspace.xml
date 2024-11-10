@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;update&gt; payment">
-      <change afterPath="$PROJECT_DIR$/src/app/(root)/admin/dashboard/revenue/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/chart/RevenueChart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/RevenueDashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/chart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/revenue.action.ts" afterDir="false" />
+    <list default="true" id="f934016c-66c4-4610-beaf-c2d973af0e3a" name="Changes" comment="&lt;update&gt; subscription-detail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/schedule/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(root)/customer/subscription-detail/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/canvas/qr-code.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/UserSubscriptionList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/subscription.action.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +66,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -95,8 +89,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
@@ -165,6 +159,7 @@
       <workItem from="1730903157183" duration="3330000" />
       <workItem from="1731064441744" duration="9380000" />
       <workItem from="1731076344612" duration="2773000" />
+      <workItem from="1731236714497" duration="3732000" />
     </task>
     <task id="LOCAL-00005" summary="fix bug 9:45">
       <option name="closed" value="true" />
@@ -214,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730904700718</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="&lt;update&gt; subscription-detail">
+      <option name="closed" value="true" />
+      <created>1731240202517</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1731240202517</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +246,7 @@
     <MESSAGE value="&lt;add&gt; image for membership" />
     <MESSAGE value="&lt;add&gt; qr code&#10;&lt;update&gt; payment" />
     <MESSAGE value="&lt;fix&gt; error build" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;fix&gt; error build" />
+    <MESSAGE value="&lt;update&gt; subscription-detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;update&gt; subscription-detail" />
   </component>
 </project>

@@ -55,6 +55,11 @@ export interface UserResponseValue {
     dateOfBirth: Date;
 }
 
+export interface DayGroupResponseValue {
+    id: string;
+    group: string;
+}
+
 export interface CustomerResponseValue {
     id: string;
     email: string;

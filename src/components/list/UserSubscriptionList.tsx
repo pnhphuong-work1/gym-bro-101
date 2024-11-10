@@ -3,7 +3,7 @@ import { getUserSubscriptionByUserId } from "@/lib/actions/userSubscription.acti
 import { useGlobalContext } from "@/context/GlobalContext";
 import { UserSubscriptionResponseValue } from "@/types";
 import { isErrorResponseValue } from "@/lib/utils";
-import QRCodeDialog from '@/components/canvas/qr-code'; // Import the QR code dialog component
+import QRCodeDialog from '@/components/canvas/qr-code';
 
 const UserSubscriptionList = () => {
     const [userSubscription, setUserSubscription] = useState<UserSubscriptionResponseValue[]>([]);
@@ -11,7 +11,7 @@ const UserSubscriptionList = () => {
     const [error, setError] = useState<string>('');
     const { userId } = useGlobalContext();
     const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
-    const [selectedSubscription, setSelectedSubscription] = useState<UserSubscriptionResponseValue | null>(null); // State to hold selected subscription
+    const [selectedSubscription, setSelectedSubscription] = useState<UserSubscriptionResponseValue | null>(null);
     const qrCodeRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
         setLoading(true);

@@ -31,3 +31,28 @@ export function getAxiosClientWithToken(token: string) {
 export function isErrorResponseValue(value: any): value is ErrorResponseValue {
   return value.type !== undefined && value.title !== undefined && value.status !== undefined && value.detail !== undefined;
 }
+
+export function formatDateTime(isoString: string): string {
+    const date = new Date(isoString);
+
+    // Extract hours and minutes
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+    // Extract day, month, and year
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const year = date.getUTCFullYear();
+
+    // Return formatted string
+    return `${hours}:${minutes} ${day}/${month}/${year}`;
+}
+
+export function formatDurationToHour(duration: string|null): string {
+    if (duration === null) {
+        return "";
+    }
+    const [hours, minutes] = duration.split(':');
+    // Return formatted string
+    return `${hours}:${minutes} hour(s)`;
+}

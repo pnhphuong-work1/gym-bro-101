@@ -8,6 +8,7 @@ interface Subscription {
     totalWorkoutTime: string;
     group: string;
     price: number;
+    totalMonth: number;
 }
 
 interface CartProps {
@@ -20,19 +21,21 @@ const Cart: React.FC<CartProps> = ({ subscriptions }) => {
             <Table>
                 <TableHeader>
                     <TableRow className='text-2xl'>
-                        <TableHead className=''>Name</TableHead>
-                        <TableHead className=''>Workout Time</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Workout Time</TableHead>
                         <TableHead>Group</TableHead>
-                        <TableHead className=''>Price</TableHead>
+                        <TableHead>Month</TableHead>
+                        <TableHead>Price</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {subscriptions.map((subscription) => (
                         <TableRow className='text-xl' key={subscription.id}>
                             <TableCell className='text-[#2519A4] text-2xl'>{subscription.name}</TableCell>
-                            <TableCell className=''>{subscription.totalWorkoutTime}</TableCell>
+                            <TableCell>{subscription.totalWorkoutTime}</TableCell>
                             <TableCell>{subscription.group}</TableCell>
-                            <TableCell className=''>{subscription.price}$</TableCell>
+                            <TableCell>{subscription.totalMonth}</TableCell>
+                            <TableCell>{subscription.price} VND</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

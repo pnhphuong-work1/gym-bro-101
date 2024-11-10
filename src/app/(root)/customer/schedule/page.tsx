@@ -11,27 +11,27 @@ import HomeNav from "@/components/shared/navbar/HomeNav";
 import {CheckLogResponseValue, WorkoutDaysResponseValue} from "@/types";
 import {getAllWorkoutDaysByUserId} from "@/lib/actions/userSubscription.action";
 import {useGlobalContext} from "@/context/GlobalContext";
-import {isErrorResponseValue} from "@/lib/utils";
+import {formatDateTime, formatDurationToHour, isErrorResponseValue} from "@/lib/utils";
 import {Card} from "@/components/ui/card";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import PaginationBase from "@/components/shared/PaginationBase";
+import {getAllCheckLogsByUserId} from "@/lib/actions/checklogs.action";
+import {Skeleton} from "@/components/ui/skeleton";
 
 const SchedulePage = () => {
     const [events, setEvents] = useState<WorkoutDaysResponseValue[]>([]);
     const [error, setError] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [activeTab, setActiveTab] = useState<string>('Schedule');
+    // Check log history
     const [checkLogList, setCheckLogList] = useState<CheckLogResponseValue[]>([]);
+    const [timeFrame, setTimeFrame] = useState<string>('ThisMonth');
+    const [checkStatus, setCheckStatus] = useState<string>('CheckIn');
+    // Pagination
     const [page, setPage] = useState<number>(1);
     const [totalCounts, setTotalCounts] = useState<number>(1);
-    const [limit, setLimit] = useState<number>(10);
     const [hasNextPage, setHasNextPage] = useState<boolean>(false);
     const [hasPrevPage, setHasPrevPage] = useState<boolean>(false);
-    const [search, setSearch] = useState<string>('');
-    const [sortBy, setSortBy] = useState<string>('createdAt');
-    const [sortOrder, setSortOrder] = useState<string>('desc');
-    const [timeFrame, setTimeFrame] = useState<string>('ThisMonth');
-    const [checkStatus, setCheckStatus] = useState<string>('All');
 
     const LogTableHeader = [
         { name: 'Type', sortable: true, sortKey: 'checkStatus' },
@@ -41,6 +41,8 @@ const SchedulePage = () => {
     ];
 
     const {userId} = useGlobalContext();
+
+    const PAGE_LIMIT = 10;
 
     useEffect(() => {
         getAllWorkoutDaysByUserId(userId)
@@ -52,16 +54,28 @@ const SchedulePage = () => {
                     setError(res.errors[0].message);
                 setIsLoading(false);
         });
-        setActiveTab("Schedule");
-    }, []);
+        getAllCheckLogsByUserId(userId, checkStatus, timeFrame, "", "","asc", "CreatedAt", page, PAGE_LIMIT)
+            .then((res) => {
+                if (!isErrorResponseValue(res)) {
+                    setCheckLogList(res.value.items);
+                    setTotalCounts(res.value.totalCount);
+                    setHasNextPage(res.value.hasNextPage);
+                    setHasPrevPage(res.value.hasPreviousPage);
+                } else {
+                    setError(res.errors[0].message);
+                }
+            });
+    }, [activeTab, checkStatus, timeFrame, page]);
     if (isLoading)
         return (
-            <div className="text-center h-full">
+            <div className="text-center h-lvh">
                 <div className={""}>
                     <Header/>
                     <HomeNav isSticky={false} status={"schedule"}/>
                 </div>
-                <p>You need to buy any subscription to view the schedule</p>
+                <p className={"mt-32 text-3xl text-red-500"}>
+                    You need to buy any subscription to view the schedule!
+                </p>
             </div>
         )
     if (error)
@@ -74,6 +88,14 @@ const SchedulePage = () => {
                 <p>{error}</p>
             </div>
         )
+
+    const handleTimeFrameChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setTimeFrame(e.target.value);
+    };
+    const handleCheckStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setCheckStatus(e.target.value);
+    };
+
     return (
         <div className={"h-full"}>
             <div className={"h-lvh"}>
@@ -83,13 +105,14 @@ const SchedulePage = () => {
                     className={"w-[70%] mx-auto mt-4 rounded-lg shadow-lg"}
                 >
                     <Tabs.Root defaultValue="Schedule">
+
                         <Tabs.List className={"flex justify-around rounded-t-lg bg-white h-12"}>
                             <Tabs.Trigger
                                 key={"Schedule"}
                                 value={"Schedule"}
                                 onClick={() => setActiveTab("Schedule")}
                                 className={`w-full px-4 py-2 text-2xl ${
-                                    activeTab === "Schedule" 
+                                    activeTab === "Schedule"
                                         ? 'text-gray-800 border-b-2'
                                         : 'text-gray-300'} 
                                         hover:text-gray-600 
@@ -104,7 +127,7 @@ const SchedulePage = () => {
                                 value={"History"}
                                 onClick={() => setActiveTab("History")}
                                 className={`w-full px-4 py-2 text-2xl ${
-                                    activeTab === "History" 
+                                    activeTab === "History"
                                         ? 'text-gray-800 border-b-2'
                                         : 'text-gray-300'} 
                                         hover:text-gray-600 
@@ -137,12 +160,45 @@ const SchedulePage = () => {
                         </Tabs.Content>
                         {/*Check log history*/}
                         <Tabs.Content value={"History"}>
+                            <div className={"flex space-x-4 p-6 items-center"}>
+                                <div className="flex items-center space-x-2">
+                                    <label htmlFor="timeFrame" className="text-lg font-medium">Time Frame:</label>
+                                    <select
+                                        id="timeFrame"
+                                        value={timeFrame}
+                                        onChange={handleTimeFrameChange}
+                                        className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    >
+                                        <option value="All">All</option>
+                                        <option value="Today">Today</option>
+                                        <option value="Yesterday">Yesterday</option>
+                                        <option value="ThisWeek">This Week</option>
+                                        <option value="ThisMonth">This Month</option>
+                                        <option value="90days">Last 90 Days</option>
+                                    </select>
+                                </div>
+
+                                {/* Check Status Selection */}
+                                <div className="flex items-center space-x-2">
+                                    <label htmlFor="checkStatus" className="text-lg font-medium">Check Status:</label>
+                                    <select
+                                        id="checkStatus"
+                                        value={checkStatus}
+                                        onChange={handleCheckStatusChange}
+                                        className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    >
+                                        <option value="All">All</option>
+                                        <option value="CheckIn">Check-In</option>
+                                        <option value="CheckOut">Check-Out</option>
+                                    </select>
+                                </div>
+                            </div>
                             <Table>
                                 <TableHeader>
                                     <TableRow>
                                         {LogTableHeader.map((header, index) => (
                                             <TableHead key={index}
-                                                         className={`text-xl ${header.sortable ? 'cursor-pointer' : ''}`}
+                                                       className={`text-xl ${header.sortable ? 'cursor-pointer' : ''}`}
                                             >
                                                 {header.name}
                                             </TableHead>
@@ -150,26 +206,32 @@ const SchedulePage = () => {
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {checkLogList.map((log, index) => (
+                                    {isLoading ? (
+                                        <TableRow>
+                                            <TableCell colSpan={7} className="text-center">
+                                                <Skeleton className="w-full h-[30px] rounded-full"/>
+                                            </TableCell>
+                                        </TableRow>
+                                    ) : (checkLogList.map((log, index) => (
                                         <TableRow key={log.id} className="border-b">
                                             <TableCell className={`text-lg ${
-                                                log.checkStatus === "CheckIn" 
-                                                    ? 'text-green-400' 
+                                                log.checkStatus === "CheckIn"
+                                                    ? 'text-green-400'
                                                     : 'text-yellow-700'}`}
                                             >
                                                 {log.checkStatus}
                                             </TableCell>
                                             <TableCell className="text-lg">{log.subscriptionName}</TableCell>
-                                            <TableCell className="text-lg">{log.workoutTime}</TableCell>
-                                            <TableCell className="text-lg">{log.createdAt}</TableCell>
+                                            <TableCell className="text-lg">{formatDurationToHour(log.workoutTime)}</TableCell>
+                                            <TableCell className="text-lg">{formatDateTime(log.createdAt)}</TableCell>
                                         </TableRow>
-                                    ))}
+                                    )))}
                                 </TableBody>
                                 <PaginationBase
                                     page={page}
                                     setPage={setPage}
                                     totalCounts={totalCounts}
-                                    limit={limit}
+                                    limit={PAGE_LIMIT}
                                     hasNextPage={hasNextPage}
                                     hasPrevPage={hasPrevPage}
                                 />

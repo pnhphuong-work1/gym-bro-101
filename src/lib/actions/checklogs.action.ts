@@ -49,7 +49,17 @@ export async function getAllCheckLogs(checkStatus?: string, timeFrame?: string, 
         return error.response.data as ErrorResponseValue;
     }
 }
-export async function getAllCheckLogsByUserId(userId: string,checkStatus?: string, timeFrame?: string, search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
+export async function getAllCheckLogsByUserId(
+    userId: string,
+    checkStatus?: string,
+    timeFrame?: string,
+    search?: string,
+    searchBy?: string,
+    sortOrder?: string,
+    sortBy?: string,
+    currentPage?: number,
+    pageSize?: number)
+{
     const credentials = await getUserCredentials();
     if (!credentials) {
         redirect('/login');
