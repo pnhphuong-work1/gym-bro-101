@@ -12,7 +12,7 @@ import {getUserCredentials} from "@/lib/actions/login.action";
 import {redirect} from "next/navigation";
 
 const baseUrl = 'v2024-09-19/subscriptions';
-export async function getAllSubscriptions(search?: string, searchBy?: string ) {
+export async function getAllSubscriptions(search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
     const axios = getAxiosClient();
     try{
         const response = await axios
