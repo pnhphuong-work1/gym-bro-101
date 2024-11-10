@@ -1,6 +1,6 @@
 'use server';
 
-import {getAxiosClient} from "@/lib/utils";
+import {getAxiosClient, getAxiosClientWithToken} from "@/lib/utils";
 import {
     BasePaginationResponseValue,
     BaseResponseValue,
@@ -8,6 +8,8 @@ import {
     ErrorResponseValue,
     SubscriptionResponseValue
 } from "@/types";
+import {getUserCredentials} from "@/lib/actions/login.action";
+import {redirect} from "next/navigation";
 
 const baseUrl = 'v2024-09-19/subscriptions';
 export async function getAllSubscriptions(search?: string, searchBy?: string, sortOrder?: string, sortBy?: string, currentPage?: number, pageSize?: number) {
@@ -20,8 +22,8 @@ export async function getAllSubscriptions(search?: string, searchBy?: string, so
                     searchBy,
                     sortOrder : "desc",
                     sortBy : "price",
-                    currentPage,
-                    pageSize
+                    currentPage: 1,
+                    pageSize: 3
                 }
             });
 
@@ -31,7 +33,11 @@ export async function getAllSubscriptions(search?: string, searchBy?: string, so
     }
 }
 export async function getSubscriptionById(id: string) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         const response = await axios.get<SubscriptionResponseValue>(`${baseUrl}/${id}`);
         return response.data;
@@ -41,7 +47,11 @@ export async function getSubscriptionById(id: string) {
 }
 
 export async function createSubscription({name, totalWorkoutTime, price, totalMonth, group}: {name: string, totalWorkoutTime: string, price: number, totalMonth: number, group: string}) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         const response = await axios.post<BaseResponseValue<any>>(baseUrl, {
             name,
@@ -57,7 +67,11 @@ export async function createSubscription({name, totalWorkoutTime, price, totalMo
 }
 
 export async function deleteSubscription(id: string) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         console.log("del subs in axios", id);
         const res = await axios.delete<BaseResponseValue<any>>(`${baseUrl}/${id}`);
@@ -70,7 +84,11 @@ export async function deleteSubscription(id: string) {
 export async function updateSubscription(
     {name, totalWorkoutTime, price, totalMonth, group}
         : {name: string, totalWorkoutTime: string, price: number, totalMonth: number, group: string}, id: string) {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         const response = await axios.put<BaseResponseValue<any>>(`${baseUrl}/${id}`, {
             name,
@@ -87,7 +105,11 @@ export async function updateSubscription(
 
 //fetch day group
 export async function fetchDayGroup() {
-    const axios = getAxiosClient();
+    const credentials = await getUserCredentials();
+    if (!credentials) {
+        redirect('/login');
+    }
+    const axios = getAxiosClientWithToken(credentials.accessToken);
     try {
         const response = await axios.get<BasePaginationResponseValue<DayGroupResponseValue>>(`/v2024-09-19/dayGroups`);
         return response.data;

@@ -25,6 +25,7 @@ const Page = () => {
     const [price, setPrice] = useState<number>(0);
     const [name, setName] = useState('');
     const [group, setGroup] = useState('');
+    const [totalMonth, setTotalMonth] = useState(0);
     const [totalWorkoutTime, setTotalWorkoutTime] = useState('');
     const [buyLoading, setBuyLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); // Modal open state
@@ -62,6 +63,7 @@ const Page = () => {
                     setPrice(response.value.price);
                     setTotalWorkoutTime(response.value.totalWorkoutTime);
                     setGroup(response.value.group);
+                    setTotalMonth(response.value.totalMonth);
                 })
                 .catch((error) => {
                     console.error("Error fetching subscription:", error);
@@ -166,6 +168,7 @@ const Page = () => {
                         name,
                         totalWorkoutTime,
                         group,
+                        totalMonth,
                         price,
                     }]}
                 />

@@ -2,10 +2,17 @@
 
 import React, {useRef} from 'react';
 import { useQRCode } from 'next-qrcode';
+import {useUserSubscriptionContext} from "@/context/SubscriptionContext";
+import {useGlobalContext} from "@/context/GlobalContext";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const QRCodeDialog = ({ isOpen, qrcodeRef, onClose, subscription }) => {
     if (!isOpen) return null;
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { subscriptionId } = useUserSubscriptionContext();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { userId } = useGlobalContext();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { Canvas } = useQRCode();
     const handleDownload = () => {
@@ -19,6 +26,7 @@ const QRCodeDialog = ({ isOpen, qrcodeRef, onClose, subscription }) => {
         link.click();
     }
 
+
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white p-5 rounded shadow-lg w-[30%] flex justify-center flex-col items-center">
@@ -29,7 +37,9 @@ const QRCodeDialog = ({ isOpen, qrcodeRef, onClose, subscription }) => {
                     ref={qrcodeRef}
                 >
                     <Canvas
-                        text={'https://github.com/bunlong/next-qrcode'}
+                        text={`Subscription ID: ${subscriptionId}
+                               User ID: ${userId}
+                        `}
                         options={{
                             errorCorrectionLevel: 'M',
                             margin: 3,
